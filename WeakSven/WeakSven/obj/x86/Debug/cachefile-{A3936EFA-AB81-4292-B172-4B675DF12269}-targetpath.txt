@@ -1,2 +1,4 @@
-Content\Characters\player.xnb
+Content\Characters\Player.xnb
+Content\face.xnb
 Content\Audio\SFX\bing.xnb
+Content\font.xnb

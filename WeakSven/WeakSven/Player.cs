@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 namespace WeakSven
@@ -21,13 +22,25 @@ namespace WeakSven
 			}
 		}
 
-		private Player() : base() { }
+
+		public Player() : base() { }
 		#endregion
 
 		public AudioSFX bing = new AudioSFX();
 
 		public void SetName(string name) { Name = name; }
 
+        protected int health = 100;
+        public int GetHealth
+        {
+            get { return Health; }
+            set
+            {
+                Health = value;
+                if (Health < 0)
+                    Health = 0;
+            }
+        }
 		public override void Load(ContentManager Content, string imageFile)
 		{
 			base.Load(Content, imageFile);
@@ -64,6 +77,7 @@ namespace WeakSven
 			}
 			else
 				Velocity = Vector2.Zero;
+
 
 			base.Update(gameTime);
 		}

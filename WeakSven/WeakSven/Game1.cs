@@ -9,6 +9,12 @@ namespace WeakSven
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        Enemy face = new Enemy();
+        Player sauce = new Player();
+        Rectangle rect;
+
+        SpriteFont font;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -27,20 +33,31 @@ namespace WeakSven
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            font = Content.Load<SpriteFont>("font");
+
 			Player.Instance.Load(Content, "Characters/Player");
+            face.Load(Content, "face");
         }
 
         protected override void UnloadContent() { }
 
         protected override void Update(GameTime gameTime)
         {
+
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
 			if (Keyboard.GetState().IsKeyDown(Keys.Escape))
 				this.Exit();
 
+            //if(sauce.rect.Intersects(face.Rect))
+            //{
+                
+            //}
+
 			Player.Instance.Update(gameTime);
+
+            face.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -49,8 +66,13 @@ namespace WeakSven
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 			spriteBatch.Begin();
-
-			Player.Instance.Draw(spriteBatch);
+            
+            face.Draw(spriteBatch);
+            Player.Instance.Draw(spriteBatch);
+            
+            
+            spriteBatch.DrawString(font, "Health: " + sauce.GetHealth.ToString(), new Vector2(10, 10), Color.Yellow);
+			
 
 			spriteBatch.End();
             base.Draw(gameTime);

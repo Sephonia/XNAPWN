@@ -2,13 +2,22 @@
 <XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
   <Asset Type="Pipeline:BuildItemCollection">
     <Item>
-      <Source>Characters\player.png</Source>
-      <Name>Characters\player</Name>
+      <Source>Characters\Player.png</Source>
+      <Name>Characters\Player</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\student\Documents\GitHub\XNAPWN\WeakSven\WeakSven\bin\x86\Debug\Content\Characters\player.xnb</Output>
-      <Time>2014-08-30T16:05:43.9360546-07:00</Time>
+      <Output>C:\Users\student\Documents\GitHub\XNAPWN\WeakSven\WeakSven\bin\x86\Debug\Content\Characters\Player.xnb</Output>
+      <Time>2014-09-03T14:25:14.3454992-07:00</Time>
+    </Item>
+    <Item>
+      <Source>face.png</Source>
+      <Name>face</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\student\Documents\GitHub\XNAPWN\WeakSven\WeakSven\bin\x86\Debug\Content\face.xnb</Output>
+      <Time>2014-09-03T15:05:42.9490947-07:00</Time>
     </Item>
     <Item>
       <Source>Audio\SFX\bing.wav</Source>
@@ -17,7 +26,16 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\student\Documents\GitHub\XNAPWN\WeakSven\WeakSven\bin\x86\Debug\Content\Audio\SFX\bing.xnb</Output>
-      <Time>2014-08-30T16:29:43.9633429-07:00</Time>
+      <Time>2014-09-03T14:25:14.3435042-07:00</Time>
+    </Item>
+    <Item>
+      <Source>font.spritefont</Source>
+      <Name>font</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\student\Documents\GitHub\XNAPWN\WeakSven\WeakSven\bin\x86\Debug\Content\font.xnb</Output>
+      <Time>2014-09-03T14:40:10.7642642-07:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -58,7 +76,7 @@
       </Assembly>
       <Assembly>
         <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2014-08-30T12:44:43.2853179-07:00</Value>
+        <Value>2014-09-03T14:11:36.4670088-07:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>
