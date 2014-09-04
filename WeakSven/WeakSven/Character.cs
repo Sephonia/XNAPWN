@@ -8,7 +8,7 @@ namespace WeakSven
 	{
 		public Animation animation = new Animation();
 
-		protected Rectangle rect = new Rectangle(0, 0, 0, 0);
+		public Rectangle rect = new Rectangle(0, 0, 0, 0);
 
 		public Vector2 Position { get; set; }
 		public Vector2 Velocity = Vector2.Zero;

@@ -54,5 +54,7 @@ namespace WeakSven
         {
             spriteBatch.Draw(face, rectangle, Color.White);
         }
+        
+       
 	}
 }

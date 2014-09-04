@@ -1,16 +1,22 @@
-﻿namespace WeakSven
+﻿using System.Collections.Generic;
+namespace WeakSven
 {
 	class InteractiveCharacter : Character
 	{
-		public int Health { get; protected set; }
+        protected int health = 100;
+        public int Health { get; protected set; }
 		public int Attack { get; protected set; }
 		public int Defense { get; protected set; }
-		public int Money { get; protected set; }
+		public int Money { get; protected set; }      
 
-		public InteractiveCharacter()
-			: base()
-		{
 
-		}
+        public InteractiveCharacter()
+            : base()
+        {
+
+
+        }
+       
+        
 	}
 }
