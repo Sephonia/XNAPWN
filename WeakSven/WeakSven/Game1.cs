@@ -8,7 +8,7 @@ namespace WeakSven
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        MainMenu menu;
+        //MainMenu menu;
 
         Enemy monster = new Enemy();
         Player sauce = new Player();
@@ -17,6 +17,10 @@ namespace WeakSven
 
         static float windowWidth;
         static float windowHeight;
+
+        Texture2D titleBox;
+        Button playButton;
+        Text text;
 
         SpriteFont font;
 
@@ -29,9 +33,7 @@ namespace WeakSven
         protected override void Initialize()
         {
             base.Initialize();
-
-			// Comment the following if you don't want to see the mouse
-			IsMouseVisible = true;
+            IsMouseVisible = true;
 
             windowWidth = Window.ClientBounds.Width;
             windowHeight = Window.ClientBounds.Height;
@@ -40,15 +42,32 @@ namespace WeakSven
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            font = Content.Load<SpriteFont>("font");
+
+            titleBox = new Texture2D(GraphicsDevice, 1, 1);
+            titleBox.SetData(new Color[] { Color.White });
+
+            playButton = new Button(font, titleBox, new Rectangle(50, 50, 150, 75));
+            playButton.Label = "PLAY";
+
+            text = new Text(font, titleBox);
+            text.Label = "FINAL HOTSAUCE QUEST-RIM";
+
+            playButton.clicked += playButton_clicked; 
 
             
-
-            font = Content.Load<SpriteFont>("font");
-            menu = new MainMenu(font, windowWidth, windowHeight);
+           // menu = new MainMenu(font, windowWidth, windowHeight);
 
 			Player.Instance.Load(Content, "Characters/Player");
             monster.Load(Content, "Enemy/Monster");
             
+        }
+
+        void playButton_clicked(UI sender)
+        {
+            ((Button)sender).Label = "LOADING...";
+
+            playButton.clicked -= playButton_clicked;
         }
 
         protected override void UnloadContent() { }
@@ -61,8 +80,9 @@ namespace WeakSven
 
 			if (Keyboard.GetState().IsKeyDown(Keys.Escape))
 				this.Exit();
-            
-           
+
+            playButton.Update(gameTime);
+            text.Update(gameTime);
             
 			Player.Instance.Update(gameTime);
             
@@ -89,15 +109,19 @@ namespace WeakSven
             GraphicsDevice.Clear(Color.CornflowerBlue);
 			spriteBatch.Begin();
 
-            menu.Draw(spriteBatch);
+            if (playButton.drawn)
+            {
+                playButton.Draw(spriteBatch);
+                text.Draw(spriteBatch);
+            }
 
-            monster.Draw(spriteBatch);
-            Player.Instance.Draw(spriteBatch);
-            
-            
-            spriteBatch.DrawString(font, "Player Hp: " + sauce.GetHealth.ToString(), new Vector2(10, 10), Color.Yellow);
-            spriteBatch.DrawString(font, "Monster HP: " + monster.Health.ToString(), new Vector2(640,10),Color.Black);
-			
+            if (!playButton.drawn)
+            {
+                spriteBatch.DrawString(font, "Player Hp: " + sauce.GetHealth.ToString(), new Vector2(10, 10), Color.Yellow);
+                spriteBatch.DrawString(font, "Monster HP: " + monster.Health.ToString(), new Vector2(640, 10), Color.Black);
+                monster.Draw(spriteBatch);
+                Player.Instance.Draw(spriteBatch);
+            }
 
 			spriteBatch.End();
             base.Draw(gameTime);
