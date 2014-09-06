@@ -8,7 +8,6 @@ namespace WeakSven
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        //MainMenu menu;
 
         Enemy monster = new Enemy();
         Player sauce = new Player();
@@ -60,10 +59,7 @@ namespace WeakSven
 
             playButton.clicked += playButton_clicked; 
 
-            
-           // menu = new MainMenu(font, windowWidth, windowHeight);
             font = Content.Load<SpriteFont>("font");
-            //menu = new MainMenu(font, windowWidth, windowHeight);
 
 			Player.Instance.Load(Content, "Characters/Player");
             monster.Load(Content, "Enemy/Monster");
@@ -123,6 +119,8 @@ namespace WeakSven
             GraphicsDevice.Clear(Color.CornflowerBlue);
 			spriteBatch.Begin();
 
+            spriteBatch.Draw(bgPic, new Rectangle(0, 0, windowWidth, windowHeight), Color.White);
+
             if (playButton.drawn)
             {
                 playButton.Draw(spriteBatch);
@@ -136,17 +134,6 @@ namespace WeakSven
                 monster.Draw(spriteBatch);
                 Player.Instance.Draw(spriteBatch);
             }
-            //menu.Draw(spriteBatch);
-
-            spriteBatch.Draw(bgPic, new Rectangle(0, 0, windowWidth, windowHeight), Color.White);
-
-            monster.Draw(spriteBatch);
-            Player.Instance.Draw(spriteBatch);
-
-
-            spriteBatch.DrawString(font, "Player Hp: " + sauce.GetHealth.ToString(), new Vector2(10, 10), Color.Yellow);
-            spriteBatch.DrawString(font, "Monster HP: " + monster.Health.ToString(), new Vector2(640,10),Color.Black);
-			
 
 			spriteBatch.End();
             base.Draw(gameTime);
