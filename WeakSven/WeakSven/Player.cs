@@ -24,7 +24,7 @@ namespace WeakSven
 		}
 
 
-		public Player() : base() { }
+        public Player() : base() { Speed = 0.75f; }
 		#endregion
 
 		//public AudioSFX bing = new AudioSFX();
@@ -32,14 +32,14 @@ namespace WeakSven
 		public void SetName(string name) { Name = name; }
 
         protected int health = 100;
-        public int GetHealth
+        public int Health
         {
-            get { return Health; }
+            get { return health; }
             set
             {
-                Health = value;
-                if (Health < 0)
-                    Health = 0;
+                health = value;
+                if (health < 0)
+                    health = 0;
             }
         }
 

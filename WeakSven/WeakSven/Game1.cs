@@ -10,10 +10,9 @@ namespace WeakSven
         SpriteBatch spriteBatch;
         //MainMenu menu;
 
-        Enemy monster = new Enemy();
-        Player sauce = new Player();
-        //Circle playerHitBox = new Circle(0,0,64.0f);
-        //Circle monsterHitBox = new Circle(0,0,64.0f);
+        Enemy monster = new Enemy();        
+        Circle playerHitBox = new Circle(0,0,64.0f);
+        Circle monsterHitBox = new Circle(0,0,64.0f);
 
         Rectangle bg;
         Texture2D bgPic;
@@ -34,7 +33,9 @@ namespace WeakSven
         protected override void Initialize()
         {
             base.Initialize();
-
+            
+            
+          
 			// Comment the following if you don't want to see the mouse
 			IsMouseVisible = true;
 
@@ -54,7 +55,7 @@ namespace WeakSven
 			Player.Instance.Load(Content, "Characters/Player");
             monster.Load(Content, "Enemy/Monster");
 
-            bgPic = Content.Load<Texture2D>("rest");
+            bgPic = Content.Load<Texture2D>("BG_Art/rest");
 
         }
 
@@ -69,6 +70,7 @@ namespace WeakSven
 			if (Keyboard.GetState().IsKeyDown(Keys.Escape))
 				this.Exit();
 
+            
             bg.X = bgPic.Width;
             bg.Y = bgPic.Height;
 
@@ -80,17 +82,20 @@ namespace WeakSven
             
             monster.Update(gameTime);
 
-            //playerHitBox.center.X = (sauce.rect.Width / 2);
-            //playerHitBox.center.Y = (sauce.rect.Height / 2);
+            playerHitBox.center.X = (Player.Instance.rect.Width / 2);
+            playerHitBox.center.Y = (Player.Instance.rect.Height / 2);
 
-            //monsterHitBox.center.X = (monster.rect.Width / 2);
-            //monsterHitBox.center.Y = (monster.rect.Height / 2);
+            monsterHitBox.center.X = (monster.rect.Width / 2);
+            monsterHitBox.center.Y = (monster.rect.Height / 2);
 
-            if (sauce.rect.Intersects(monster.rect))
+            if (Player.Instance.rect.Intersects(monster.rect))
             {
-                sauce.GetHealth += 30;                
+                Player.Instance.Health += 5;                
             }
-            
+            if (playerHitBox.Intersects(monsterHitBox))
+            {
+                Player.Instance.Health -= 1;
+            }
             
 
             base.Update(gameTime);
@@ -109,8 +114,8 @@ namespace WeakSven
             Player.Instance.Draw(spriteBatch);
 
 
-            spriteBatch.DrawString(font, "Player Hp: " + sauce.GetHealth.ToString(), new Vector2(10, 10), Color.Yellow);
-            spriteBatch.DrawString(font, "Monster HP: " + monster.Health.ToString(), new Vector2(640,10),Color.Black);
+            spriteBatch.DrawString(font, "Player Hp: " + Player.Instance.Health.ToString(), new Vector2(10, 10), Color.Yellow);
+            spriteBatch.DrawString(font, "Monster HP: " + monster.Health.ToString(), new Vector2(640,10),Color.Yellow);
 			
 
 			spriteBatch.End();

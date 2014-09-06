@@ -10,26 +10,29 @@ namespace WeakSven
 
 		public Rectangle rect = new Rectangle(0, 0, 0, 0);
 
+        public Texture2D img = null;
+
 		public Vector2 Position { get; set; }
 		public Vector2 Velocity = Vector2.Zero;
 		public float Speed { get; protected set; }
 
-		public Character() : base() { Speed = 0.75f; }
-		public Character(string name) : base(name) { Speed = 0.75f; }
+        public Character() : base() { Speed = 0.75f; }
+        public Character(string name) : base(name) { Speed = 0.75f; }
+        
 
-		public virtual void Load(ContentManager Content, string imageFile)
-		{
-			animation.FrameCountX = 4;
-			animation.FrameCountY = 4;
-			animation.FramesPerSec = 33;
+        public virtual void Load(ContentManager Content, string imageFile)
+        {
+            animation.FrameCountX = 4;
+            animation.FrameCountY = 4;
+            animation.FramesPerSec = 33;
 
-			animation.SpriteSheet = Content.Load<Texture2D>(imageFile);
+            animation.SpriteSheet = Content.Load<Texture2D>(imageFile);
 
-			rect.X = (int)Position.X;
-			rect.Y = (int)Position.Y;
-			rect.Width = animation.FrameWidth;
-			rect.Height = animation.FrameHeight;
-		}
+            rect.X = (int)Position.X;
+            rect.Y = (int)Position.Y;
+            rect.Width = animation.FrameWidth;
+            rect.Height = animation.FrameHeight;
+        }
 
 		public virtual void Update(GameTime gameTime)
 		{

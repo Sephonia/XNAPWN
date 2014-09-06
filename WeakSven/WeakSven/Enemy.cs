@@ -6,54 +6,44 @@ namespace WeakSven
 {
 	class Enemy : InteractiveCharacter
 	{
-        int Attack = 5;
-        int Defense = 5;
 
-        //SpriteFont font;
-        //Texture2D text;
-        //Vector2 position = Vector2.Zero;
-
-        Texture2D face = null;
-        Rectangle rectangle;
-        Vector2 place = new Vector2(300, 150);
-
-        float velocity = 5.0f;
-
-        //bool attacked = false;
-
-		public Enemy()
-			: base()
-		{
-
-		}
-
-        public void Load(ContentManager Content, string imageName)
+       
+        protected int health = 100;
+        public int Health
         {
-            //GraphicsDevice graphicsDevice, SpriteFont fonts
-            //text = new Texture2D(graphicsDevice, 1, 1);
-            //text.SetData(new Color[] { Color.White });
-
-            //font = fonts;
-
-            face = Content.Load<Texture2D>(imageName);
-            rectangle.Width = face.Width;
-            rectangle.Height = face.Height;
-
+            get { return health; }
+            set
+            {
+                health = value;
+                if (health < 0)
+                    health = 0;
+            }
         }
+
+        public Enemy()
+            : base() {
+                Speed = 0.05f;
+        }
+
+        public override void Load(ContentManager Content, string imageFile)
+        {
+            base.Load(Content, imageFile);
+            
+            //bing.Sound = Content.Load<SoundEffect>("Audio/SFX/bing");
+        }
+
 		public override void Update(GameTime gameTime)
 		{
-            rectangle.X = (int)place.X;
-            rectangle.Y = (int)place.Y;
+            if (((int)gameTime.TotalGameTime.TotalSeconds) % 3 == 0)
+                Velocity.X = Speed * 20;
 
+            else
+                Velocity = Vector2.Zero;
 			// TODO:  AI here
            
 			base.Update(gameTime);
 		}
 
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            spriteBatch.Draw(face, rectangle, Color.White);
-        }
         
        
 	}
