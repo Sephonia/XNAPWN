@@ -1,5 +1,5 @@
 Content\Characters\Player.xnb
 Content\Enemy\Monster.xnb
+Content\rest.xnb
 Content\Audio\SFX\bing.xnb
 Content\font.xnb
-Content\rest.xnb

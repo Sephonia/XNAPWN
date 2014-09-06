@@ -8,11 +8,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\student\Documents\GitHub\XNAPWN\WeakSven\WeakSven\bin\x86\Debug\Content\Characters\Player.xnb</Output>
-<<<<<<< HEAD
       <Time>2014-09-06T08:39:58.3405288-07:00</Time>
-=======
-      <Time>2014-09-06T13:21:02.2790158-07:00</Time>
->>>>>>> 1bf9dda8b9dcaec043042167d481588f141d62df
     </Item>
     <Item>
       <Source>Enemy\Monster.png</Source>
@@ -21,36 +17,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\student\Documents\GitHub\XNAPWN\WeakSven\WeakSven\bin\x86\Debug\Content\Enemy\Monster.xnb</Output>
-<<<<<<< HEAD
       <Time>2014-09-06T08:39:58.3415264-07:00</Time>
-=======
-      <Time>2014-09-06T13:21:02.2820158-07:00</Time>
->>>>>>> 1bf9dda8b9dcaec043042167d481588f141d62df
-    </Item>
-    <Item>
-      <Source>Audio\SFX\bing.wav</Source>
-      <Name>Audio\SFX\bing</Name>
-      <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\student\Documents\GitHub\XNAPWN\WeakSven\WeakSven\bin\x86\Debug\Content\Audio\SFX\bing.xnb</Output>
-<<<<<<< HEAD
-      <Time>2014-09-06T08:39:58.3405288-07:00</Time>
-=======
-      <Time>2014-09-06T13:21:02.2780158-07:00</Time>
->>>>>>> 1bf9dda8b9dcaec043042167d481588f141d62df
-    </Item>
-    <Item>
-      <Source>font.spritefont</Source>
-      <Name>font</Name>
-      <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\student\Documents\GitHub\XNAPWN\WeakSven\WeakSven\bin\x86\Debug\Content\font.xnb</Output>
-<<<<<<< HEAD
-      <Time>2014-09-06T08:39:58.3515024-07:00</Time>
-=======
-      <Time>2014-09-06T13:21:02.2840158-07:00</Time>
     </Item>
     <Item>
       <Source>rest.png</Source>
@@ -59,8 +26,25 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\student\Documents\GitHub\XNAPWN\WeakSven\WeakSven\bin\x86\Debug\Content\rest.xnb</Output>
-      <Time>2014-09-06T13:56:44.9539666-07:00</Time>
->>>>>>> 1bf9dda8b9dcaec043042167d481588f141d62df
+      <Time>2014-09-06T15:15:35.6418696-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Audio\SFX\bing.wav</Source>
+      <Name>Audio\SFX\bing</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\student\Documents\GitHub\XNAPWN\WeakSven\WeakSven\bin\x86\Debug\Content\Audio\SFX\bing.xnb</Output>
+      <Time>2014-09-06T08:39:58.3405288-07:00</Time>
+    </Item>
+    <Item>
+      <Source>font.spritefont</Source>
+      <Name>font</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\student\Documents\GitHub\XNAPWN\WeakSven\WeakSven\bin\x86\Debug\Content\font.xnb</Output>
+      <Time>2014-09-06T08:39:58.3515024-07:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -101,11 +85,7 @@
       </Assembly>
       <Assembly>
         <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-<<<<<<< HEAD
         <Value>2014-09-06T08:35:07.7381172-07:00</Value>
-=======
-        <Value>2014-09-06T08:29:21.8499482-07:00</Value>
->>>>>>> 1bf9dda8b9dcaec043042167d481588f141d62df
       </Assembly>
     </Assemblies>
   </Asset>
