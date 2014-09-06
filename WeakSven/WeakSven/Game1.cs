@@ -15,8 +15,13 @@ namespace WeakSven
         //Circle playerHitBox = new Circle(0,0,64.0f);
         //Circle monsterHitBox = new Circle(0,0,64.0f);
 
-        static float windowWidth;
-        static float windowHeight;
+        Rectangle bg;
+        Texture2D bgPic;
+        public int bgSpeed = 5;
+        public Vector2 velo = Vector2.Zero; //for the background
+
+        int windowWidth;
+        int windowHeight;
 
         Texture2D titleBox;
         Button playButton;
@@ -47,6 +52,7 @@ namespace WeakSven
             titleBox = new Texture2D(GraphicsDevice, 1, 1);
             titleBox.SetData(new Color[] { Color.White });
 
+<<<<<<< HEAD
             playButton = new Button(font, titleBox, new Rectangle(50, 50, 150, 75));
             playButton.Label = "PLAY";
 
@@ -57,10 +63,16 @@ namespace WeakSven
 
             
            // menu = new MainMenu(font, windowWidth, windowHeight);
+=======
+            font = Content.Load<SpriteFont>("font");
+            //menu = new MainMenu(font, windowWidth, windowHeight);
+>>>>>>> 1bf9dda8b9dcaec043042167d481588f141d62df
 
 			Player.Instance.Load(Content, "Characters/Player");
             monster.Load(Content, "Enemy/Monster");
-            
+
+            bgPic = Content.Load<Texture2D>("rest");
+
         }
 
         void playButton_clicked(UI sender)
@@ -81,9 +93,19 @@ namespace WeakSven
 			if (Keyboard.GetState().IsKeyDown(Keys.Escape))
 				this.Exit();
 
+<<<<<<< HEAD
             playButton.Update(gameTime);
             text.Update(gameTime);
             
+=======
+            bg.X = bgPic.Width;
+            bg.Y = bgPic.Height;
+
+            //if (sauce.Velocity.X > 0)
+            //    bgPic.Width = bgSpeed;
+
+
+>>>>>>> 1bf9dda8b9dcaec043042167d481588f141d62df
 			Player.Instance.Update(gameTime);
             
             monster.Update(gameTime);
@@ -99,7 +121,7 @@ namespace WeakSven
                 sauce.GetHealth += 30;                
             }
             
-                
+            
 
             base.Update(gameTime);
         }
@@ -109,6 +131,7 @@ namespace WeakSven
             GraphicsDevice.Clear(Color.CornflowerBlue);
 			spriteBatch.Begin();
 
+<<<<<<< HEAD
             if (playButton.drawn)
             {
                 playButton.Draw(spriteBatch);
@@ -122,6 +145,19 @@ namespace WeakSven
                 monster.Draw(spriteBatch);
                 Player.Instance.Draw(spriteBatch);
             }
+=======
+            //menu.Draw(spriteBatch);
+
+            spriteBatch.Draw(bgPic, new Rectangle(0, 0, windowWidth, windowHeight), Color.White);
+
+            monster.Draw(spriteBatch);
+            Player.Instance.Draw(spriteBatch);
+
+
+            spriteBatch.DrawString(font, "Player Hp: " + sauce.GetHealth.ToString(), new Vector2(10, 10), Color.Yellow);
+            spriteBatch.DrawString(font, "Monster HP: " + monster.Health.ToString(), new Vector2(640,10),Color.Black);
+			
+>>>>>>> 1bf9dda8b9dcaec043042167d481588f141d62df
 
 			spriteBatch.End();
             base.Draw(gameTime);

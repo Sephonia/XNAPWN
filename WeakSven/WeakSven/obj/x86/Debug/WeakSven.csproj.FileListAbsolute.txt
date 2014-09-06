@@ -28,3 +28,7 @@ C:\Users\Monica\Documents\GitHub\XNAPWN\WeakSven\WeakSven\obj\x86\Debug\Microsof
 C:\Users\Monica\Documents\GitHub\XNAPWN\WeakSven\WeakSven\obj\x86\Debug\WeakSven.exe
 C:\Users\Monica\Documents\GitHub\XNAPWN\WeakSven\WeakSven\obj\x86\Debug\WeakSven.pdb
 C:\Users\student\Documents\GitHub\XNAPWN\WeakSven\WeakSven\bin\x86\Debug\Content\Enemy\Monster.xnb
+<<<<<<< HEAD
+=======
+C:\Users\student\Documents\GitHub\XNAPWN\WeakSven\WeakSven\bin\x86\Debug\Content\rest.xnb
+>>>>>>> 1bf9dda8b9dcaec043042167d481588f141d62df
