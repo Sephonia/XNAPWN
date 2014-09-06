@@ -36,15 +36,15 @@ namespace WeakSven
         protected override void Initialize()
         {
             base.Initialize();
-<<<<<<< HEAD
+
             
             
           
 			// Comment the following if you don't want to see the mouse
 			IsMouseVisible = true;
-=======
+
             IsMouseVisible = true;
->>>>>>> 6149e4a11b03d36d737103ecfe169b4fbdf9d4dc
+
 
             windowWidth = Window.ClientBounds.Width;
             windowHeight = Window.ClientBounds.Height;
@@ -93,12 +93,9 @@ namespace WeakSven
 			if (Keyboard.GetState().IsKeyDown(Keys.Escape))
 				this.Exit();
 
-<<<<<<< HEAD
-            
-=======
             playButton.Update(gameTime);
             text.Update(gameTime);
->>>>>>> 6149e4a11b03d36d737103ecfe169b4fbdf9d4dc
+
             bg.X = bgPic.Width;
             bg.Y = bgPic.Height;
 
@@ -115,13 +112,16 @@ namespace WeakSven
             monsterHitBox.center.X = (monster.rect.Width / 2);
             monsterHitBox.center.Y = (monster.rect.Height / 2);
 
-            if (Player.Instance.rect.Intersects(monster.rect))
+            if (!playButton.drawn)
             {
-                Player.Instance.Health += 5;                
-            }
-            if (playerHitBox.Intersects(monsterHitBox))
-            {
-                Player.Instance.Health -= 1;
+                if (Player.Instance.rect.Intersects(monster.rect))
+                {
+                    Player.Instance.Health += 5;
+                }
+                if (playerHitBox.Intersects(monsterHitBox))
+                {
+                    Player.Instance.Health -= 1;
+                }
             }
             
 
@@ -140,20 +140,14 @@ namespace WeakSven
                 playButton.Draw(spriteBatch);
                 text.Draw(spriteBatch);
             }
-
-<<<<<<< HEAD
-            spriteBatch.DrawString(font, "Player Hp: " + Player.Instance.Health.ToString(), new Vector2(10, 10), Color.Yellow);
-            spriteBatch.DrawString(font, "Monster HP: " + monster.Health.ToString(), new Vector2(640,10),Color.Yellow);
-			
-=======
+		
             if (!playButton.drawn)
             {
-                spriteBatch.DrawString(font, "Player Hp: " + sauce.GetHealth.ToString(), new Vector2(10, 10), Color.Yellow);
-                spriteBatch.DrawString(font, "Monster HP: " + monster.Health.ToString(), new Vector2(640, 10), Color.Black);
+                spriteBatch.DrawString(font, "Player Hp: " + Player.Instance.Health.ToString(), new Vector2(10, 10), Color.Yellow);
+                spriteBatch.DrawString(font, "Monster HP: " + monster.Health.ToString(), new Vector2(640, 10), Color.Yellow);
                 monster.Draw(spriteBatch);
                 Player.Instance.Draw(spriteBatch);
             }
->>>>>>> 6149e4a11b03d36d737103ecfe169b4fbdf9d4dc
 
 			spriteBatch.End();
             base.Draw(gameTime);
