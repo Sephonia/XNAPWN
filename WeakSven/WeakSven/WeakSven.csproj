@@ -74,6 +74,8 @@
   <ItemGroup>
     <Compile Include="Animation.cs" />
     <Compile Include="AudioSFX.cs" />
+    <Compile Include="Button.cs" />
+    <Compile Include="Text.cs" />
     <Compile Include="Character.cs" />
     <Compile Include="Circle.cs" />
     <Compile Include="Enemy.cs" />
@@ -83,6 +85,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />
+    <Compile Include="UI.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />

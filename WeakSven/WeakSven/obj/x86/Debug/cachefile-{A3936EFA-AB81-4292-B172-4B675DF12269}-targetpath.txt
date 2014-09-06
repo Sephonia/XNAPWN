@@ -1,6 +1,10 @@
 Content\Characters\Player.xnb
 Content\Enemy\Monster.xnb
+Content\rest.xnb
 Content\Audio\SFX\bing.xnb
 Content\font.xnb
+<<<<<<< HEAD
 Content\BG_Art\rest.xnb
 Content\Characters\djss2.xnb
+=======
+>>>>>>> 6149e4a11b03d36d737103ecfe169b4fbdf9d4dc
