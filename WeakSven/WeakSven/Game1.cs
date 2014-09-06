@@ -8,11 +8,15 @@ namespace WeakSven
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        MainMenu menu;
 
         Enemy monster = new Enemy();
         Player sauce = new Player();
         //Circle playerHitBox = new Circle(0,0,64.0f);
         //Circle monsterHitBox = new Circle(0,0,64.0f);
+
+        static float windowWidth;
+        static float windowHeight;
 
         SpriteFont font;
 
@@ -28,13 +32,19 @@ namespace WeakSven
 
 			// Comment the following if you don't want to see the mouse
 			IsMouseVisible = true;
+
+            windowWidth = Window.ClientBounds.Width;
+            windowHeight = Window.ClientBounds.Height;
         }
 
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            
+
             font = Content.Load<SpriteFont>("font");
+            menu = new MainMenu(font, windowWidth, windowHeight);
 
 			Player.Instance.Load(Content, "Characters/Player");
             monster.Load(Content, "Enemy/Monster");
@@ -78,6 +88,8 @@ namespace WeakSven
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 			spriteBatch.Begin();
+
+            menu.Draw(spriteBatch);
 
             monster.Draw(spriteBatch);
             Player.Instance.Draw(spriteBatch);
