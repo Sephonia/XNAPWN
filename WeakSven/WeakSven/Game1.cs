@@ -8,15 +8,20 @@ namespace WeakSven
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        MainMenu menu;
+        //MainMenu menu;
 
         Enemy monster = new Enemy();
         Player sauce = new Player();
         //Circle playerHitBox = new Circle(0,0,64.0f);
         //Circle monsterHitBox = new Circle(0,0,64.0f);
 
-        static float windowWidth;
-        static float windowHeight;
+        Rectangle bg;
+        Texture2D bgPic;
+        public int bgSpeed = 5;
+        public Vector2 velo = Vector2.Zero; //for the background
+
+        int windowWidth;
+        int windowHeight;
 
         SpriteFont font;
 
@@ -44,11 +49,13 @@ namespace WeakSven
             
 
             font = Content.Load<SpriteFont>("font");
-            menu = new MainMenu(font, windowWidth, windowHeight);
+            //menu = new MainMenu(font, windowWidth, windowHeight);
 
 			Player.Instance.Load(Content, "Characters/Player");
             monster.Load(Content, "Enemy/Monster");
-            
+
+            bgPic = Content.Load<Texture2D>("rest");
+
         }
 
         protected override void UnloadContent() { }
@@ -61,9 +68,14 @@ namespace WeakSven
 
 			if (Keyboard.GetState().IsKeyDown(Keys.Escape))
 				this.Exit();
-            
-           
-            
+
+            bg.X = bgPic.Width;
+            bg.Y = bgPic.Height;
+
+            //if (sauce.Velocity.X > 0)
+            //    bgPic.Width = bgSpeed;
+
+
 			Player.Instance.Update(gameTime);
             
             monster.Update(gameTime);
@@ -79,7 +91,7 @@ namespace WeakSven
                 sauce.GetHealth += 30;                
             }
             
-                
+            
 
             base.Update(gameTime);
         }
@@ -89,12 +101,14 @@ namespace WeakSven
             GraphicsDevice.Clear(Color.CornflowerBlue);
 			spriteBatch.Begin();
 
-            menu.Draw(spriteBatch);
+            //menu.Draw(spriteBatch);
+
+            spriteBatch.Draw(bgPic, new Rectangle(0, 0, windowWidth, windowHeight), Color.White);
 
             monster.Draw(spriteBatch);
             Player.Instance.Draw(spriteBatch);
-            
-            
+
+
             spriteBatch.DrawString(font, "Player Hp: " + sauce.GetHealth.ToString(), new Vector2(10, 10), Color.Yellow);
             spriteBatch.DrawString(font, "Monster HP: " + monster.Health.ToString(), new Vector2(640,10),Color.Black);
 			
