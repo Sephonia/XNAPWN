@@ -27,6 +27,9 @@ namespace WeakSven
         public Player() : base() { Speed = 0.75f; }
 		#endregion
 
+        public Vector2 place = Vector2.Zero; // name box hovering
+
+
 		//public AudioSFX bing = new AudioSFX();
 
 		public void SetName(string name) { Name = name; }
