@@ -64,11 +64,7 @@ namespace WeakSven
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-<<<<<<< HEAD
             graphics.IsFullScreen = false;
-=======
-           // graphics.IsFullScreen = true;
->>>>>>> fe91478aa5e4290952677bf6cd2b462d8d4aa69d
 
             // if you don't want full screen play with these values.
             graphics.PreferredBackBufferHeight = 600;
@@ -109,15 +105,12 @@ namespace WeakSven
 
             bgPic = Content.Load<Texture2D>("BG_Art/rest");
 
-<<<<<<< HEAD
             builder.LoadTextures(Content);
 
             level1.LoadTextures(Content);
             level1.Load(1);
-=======
-            Hero = new Hover(playName, font, "Player");
->>>>>>> fe91478aa5e4290952677bf6cd2b462d8d4aa69d
 
+            Hero = new Hover(playName, font, "Player");
             #region hovering
 
             //nameBox = new Texture2D(GraphicsDevice, 1, 1);
@@ -247,13 +240,10 @@ namespace WeakSven
                 Player.Instance.Draw(spriteBatch);
             }
 
-<<<<<<< HEAD
             if(builderMode == true)
                 builder.Draw(spriteBatch);
-=======
-            Hero.Draw(spriteBatch);
 
->>>>>>> fe91478aa5e4290952677bf6cd2b462d8d4aa69d
+            Hero.Draw(spriteBatch);
 
             #region hovering 
             //if (isHovering)
