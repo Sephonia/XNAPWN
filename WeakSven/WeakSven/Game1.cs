@@ -9,9 +9,16 @@ namespace WeakSven
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        Level level1 = new Level();
+        LevelBuilder builder = new LevelBuilder();
+
+        private bool builderMode = false;
+
         Enemy monster = new Enemy();        
         Circle playerHitBox = new Circle(0,0,64.0f);
         Circle monsterHitBox = new Circle(0,0,64.0f);
+
+        KeyboardState previousKeyboard;
 
         Rectangle bg;
         Texture2D bgPic;
@@ -50,7 +57,7 @@ namespace WeakSven
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            graphics.IsFullScreen = true;
+            graphics.IsFullScreen = false;
 
             // if you don't want full screen play with these values.
             //graphics.PreferredBackBufferHeight = 1200;
@@ -60,9 +67,6 @@ namespace WeakSven
         protected override void Initialize()
         {
             base.Initialize();
-
-            
-            
           
 			// Comment the following if you don't want to see the mouse
 			IsMouseVisible = true;
@@ -94,6 +98,10 @@ namespace WeakSven
 
             bgPic = Content.Load<Texture2D>("BG_Art/rest");
 
+            builder.LoadTextures(Content);
+
+            level1.LoadTextures(Content);
+            level1.Load(1);
 
             #region hovering
 
@@ -176,8 +184,14 @@ namespace WeakSven
             //    isHovering = false;
             #endregion
 
-            if (playButton.drawn && playerHitBox.Intersects(monsterHitBox))
+            if (builderMode)
+                builder.Update(gameTime, previousKeyboard);
+
+
+
+            if (!playButton.drawn && playerHitBox.Intersects(monsterHitBox))
             {
+
                 if (Player.Instance.rect.Intersects(monster.rect))
                 {
                     Player.Instance.Health += 5;
@@ -187,6 +201,8 @@ namespace WeakSven
                     Player.Instance.Health -= 1;
                 }
             }
+
+            previousKeyboard = Keyboard.GetState();
             
 
             base.Update(gameTime);
@@ -199,19 +215,24 @@ namespace WeakSven
 
             spriteBatch.Draw(bgPic, new Rectangle(0, 0, windowWidth, windowHeight), Color.White);
 
-            if (playButton.drawn)
+            if (playButton.drawn && builderMode == false)
             {
                 playButton.Draw(spriteBatch);
                 text.Draw(spriteBatch);
             }
 		
-            if (!playButton.drawn)
+            if (!playButton.drawn && builderMode == false)
             {
+                level1.Draw(spriteBatch);
+
                 spriteBatch.DrawString(font, "Player Hp: " + Player.Instance.Health.ToString(), new Vector2(10, 10), Color.Yellow);
                 spriteBatch.DrawString(font, "Monster HP: " + monster.Health.ToString(), new Vector2(640, 10), Color.Yellow);
                 monster.Draw(spriteBatch);
                 Player.Instance.Draw(spriteBatch);
             }
+
+            if(builderMode == true)
+                builder.Draw(spriteBatch);
 
             #region hovering 
             //if (isHovering)
@@ -233,6 +254,8 @@ namespace WeakSven
             //    spriteBatch.Draw(slid, slideBar, Color.Pink);
             //}
             #endregion
+            
+            
 
             spriteBatch.End();
             base.Draw(gameTime);

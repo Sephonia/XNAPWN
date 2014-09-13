@@ -75,6 +75,9 @@
     <Compile Include="Animation.cs" />
     <Compile Include="AudioSFX.cs" />
     <Compile Include="Button.cs" />
+    <Compile Include="Level.cs" />
+    <Compile Include="LevelBuilder.cs" />
+    <Compile Include="Tex.cs" />
     <Compile Include="Text.cs" />
     <Compile Include="Character.cs" />
     <Compile Include="Circle.cs" />
