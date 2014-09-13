@@ -75,9 +75,13 @@
     <Compile Include="Animation.cs" />
     <Compile Include="AudioSFX.cs" />
     <Compile Include="Button.cs" />
+<<<<<<< HEAD
     <Compile Include="Level.cs" />
     <Compile Include="LevelBuilder.cs" />
     <Compile Include="Tex.cs" />
+=======
+    <Compile Include="Hover.cs" />
+>>>>>>> fe91478aa5e4290952677bf6cd2b462d8d4aa69d
     <Compile Include="Text.cs" />
     <Compile Include="Character.cs" />
     <Compile Include="Circle.cs" />

@@ -32,22 +32,29 @@ namespace WeakSven
         Button playButton;
         Text text;
 
+        Hover Hero;
+        Rectangle playName;
+
+
         #region Hover and Slide
         //MouseState mouseState;
         //bool isHovering = false;
-        //bool isSliding = false; // for the rectangle with all player stats to slide from the edge of the screen
+
+        //Texture2D nameBox; //player's name 
+        //Texture2D badBox;  //enemy's name
+
+        //Text name;
+        //Text badName;
 
         //Rectangle playName = new Rectangle(30, 0, 20, 300); // the box that would show up on hover
         //Rectangle enemyName = new Rectangle(0, 0, 10, 300);// the box that would show up on hover
 
+        //bool isSliding = false; // for the rectangle with all player stats to slide from the edge of the screen
         //Rectangle slideBar = new Rectangle(100, 0, 20, 300);
         //Texture2D slid;
         //float velocitySlide = 2.0f;
 
-        //Texture2D nameBox; //player's name 
-        //Texture2D badBox;  //enemy's name
-        //Text name;
-        //Text badName;
+        
         #endregion
 
 
@@ -57,11 +64,15 @@ namespace WeakSven
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+<<<<<<< HEAD
             graphics.IsFullScreen = false;
+=======
+           // graphics.IsFullScreen = true;
+>>>>>>> fe91478aa5e4290952677bf6cd2b462d8d4aa69d
 
             // if you don't want full screen play with these values.
-            //graphics.PreferredBackBufferHeight = 1200;
-            //graphics.PreferredBackBufferWidth = 1200;
+            graphics.PreferredBackBufferHeight = 600;
+            graphics.PreferredBackBufferWidth = 800;
         }
 
         protected override void Initialize()
@@ -98,10 +109,14 @@ namespace WeakSven
 
             bgPic = Content.Load<Texture2D>("BG_Art/rest");
 
+<<<<<<< HEAD
             builder.LoadTextures(Content);
 
             level1.LoadTextures(Content);
             level1.Load(1);
+=======
+            Hero = new Hover(playName, font, "Player");
+>>>>>>> fe91478aa5e4290952677bf6cd2b462d8d4aa69d
 
             #region hovering
 
@@ -152,6 +167,7 @@ namespace WeakSven
 			Player.Instance.Update(gameTime);
             
             monster.Update(gameTime);
+            Hero.Update(gameTime);
 
             playerHitBox.center.X = (Player.Instance.rect.Width / 2);
             playerHitBox.center.Y = (Player.Instance.rect.Height / 2);
@@ -231,8 +247,13 @@ namespace WeakSven
                 Player.Instance.Draw(spriteBatch);
             }
 
+<<<<<<< HEAD
             if(builderMode == true)
                 builder.Draw(spriteBatch);
+=======
+            Hero.Draw(spriteBatch);
+
+>>>>>>> fe91478aa5e4290952677bf6cd2b462d8d4aa69d
 
             #region hovering 
             //if (isHovering)
