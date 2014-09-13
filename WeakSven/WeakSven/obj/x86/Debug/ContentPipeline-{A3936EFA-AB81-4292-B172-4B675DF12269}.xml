@@ -91,6 +91,15 @@
       <Output>C:\Users\student\Documents\GitHub\XNAPWN\WeakSven\WeakSven\bin\x86\Debug\Content\BG_Art\bg2.xnb</Output>
       <Time>2014-09-13T12:52:40.2583907-07:00</Time>
     </Item>
+    <Item>
+      <Source>BG_Art\bg3.jpg</Source>
+      <Name>BG_Art\bg3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\student\Documents\GitHub\XNAPWN\WeakSven\WeakSven\bin\x86\Debug\Content\BG_Art\bg3.xnb</Output>
+      <Time>2014-09-13T13:22:24.9842357-07:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{A3936EFA-AB81-4292-B172-4B675DF12269}</ContentProjectGUID>

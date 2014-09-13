@@ -8,4 +8,5 @@ Content\Audio\SFX\bing.xnb
 Content\font.xnb
 Content\stat.xnb
 Content\BG_Art\bg2.xnb
+Content\BG_Art\bg3.xnb
 Content\level1.txt

@@ -87,7 +87,7 @@ namespace WeakSven
             monster.Load(Content, "Enemy/Monster");
 
             bgPic = Content.Load<Texture2D>("BG_Art/rest");
-            levelBG = Content.Load<Texture2D>("BG_Art/bg2");
+            levelBG = Content.Load<Texture2D>("BG_Art/bg3");
 
             statSheet = Content.Load<Texture2D>("stat");
 
