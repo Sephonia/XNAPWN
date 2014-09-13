@@ -38,6 +38,33 @@
       <Time>2014-09-13T08:29:30.6958575-07:00</Time>
     </Item>
     <Item>
+      <Source>Test\circle.png</Source>
+      <Name>Test\circle</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\student\Documents\GitHub\XNAPWN\WeakSven\WeakSven\bin\x86\Debug\Content\Test\circle.xnb</Output>
+      <Time>2014-09-13T09:19:48.673377-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Characters\Block.png</Source>
+      <Name>Characters\Block</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\student\Documents\GitHub\XNAPWN\WeakSven\WeakSven\bin\x86\Debug\Content\Characters\Block.xnb</Output>
+      <Time>2014-09-13T14:14:09.6181985-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Characters\Grass.png</Source>
+      <Name>Characters\Grass</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\student\Documents\GitHub\XNAPWN\WeakSven\WeakSven\bin\x86\Debug\Content\Characters\Grass.xnb</Output>
+      <Time>2014-09-13T14:14:09.6201985-07:00</Time>
+    </Item>
+    <Item>
       <Source>Audio\SFX\bing.wav</Source>
       <Name>Audio\SFX\bing</Name>
       <Importer>WavImporter</Importer>
@@ -54,15 +81,6 @@
       <Options>None</Options>
       <Output>C:\Users\student\Documents\GitHub\XNAPWN\WeakSven\WeakSven\bin\x86\Debug\Content\font.xnb</Output>
       <Time>2014-09-13T08:29:30.7408665-07:00</Time>
-    </Item>
-    <Item>
-      <Source>Test\circle.png</Source>
-      <Name>Test\circle</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\student\Documents\GitHub\XNAPWN\WeakSven\WeakSven\bin\x86\Debug\Content\Test\circle.xnb</Output>
-      <Time>2014-09-13T09:19:48.673377-07:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
