@@ -4,3 +4,4 @@ Content\BG_Art\rest.xnb
 Content\Characters\djss2.xnb
 Content\Audio\SFX\bing.xnb
 Content\font.xnb
+Content\Test\circle.xnb

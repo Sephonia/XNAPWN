@@ -75,6 +75,7 @@
     <Compile Include="Animation.cs" />
     <Compile Include="AudioSFX.cs" />
     <Compile Include="Button.cs" />
+    <Compile Include="Combat.cs" />
     <Compile Include="Text.cs" />
     <Compile Include="Character.cs" />
     <Compile Include="Circle.cs" />

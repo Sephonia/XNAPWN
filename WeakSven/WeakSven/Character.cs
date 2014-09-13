@@ -19,6 +19,7 @@ namespace WeakSven
         public Character() : base() { Speed = 0.75f; }
         public Character(string name) : base(name) { Speed = 0.75f; }
         
+               
 
         public virtual void Load(ContentManager Content, string imageFile)
         {

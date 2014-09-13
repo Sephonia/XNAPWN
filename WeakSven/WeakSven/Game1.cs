@@ -13,6 +13,11 @@ namespace WeakSven
         Circle playerHitBox = new Circle(0,0,64.0f);
         Circle monsterHitBox = new Circle(0,0,64.0f);
 
+        Rectangle whirl = new Rectangle(0, 0, 128, 128);
+        Rectangle whirl2 = new Rectangle(0, 0, 128, 128);
+        Texture2D circTex;
+
+
         Rectangle bg;
         Texture2D bgPic;
         public int bgSpeed = 5;
@@ -50,18 +55,20 @@ namespace WeakSven
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            graphics.IsFullScreen = true;
+            graphics.IsFullScreen = false;
 
             // if you don't want full screen play with these values.
-            //graphics.PreferredBackBufferHeight = 1200;
-            //graphics.PreferredBackBufferWidth = 1200;
+            graphics.PreferredBackBufferHeight = 1200;
+            graphics.PreferredBackBufferWidth = 1200;
         }
 
         protected override void Initialize()
         {
             base.Initialize();
 
-            
+            //level has started
+            Combat.Instance.AddCombatant(monster);
+            //Combat.Instance.AddCombatant(Player.Instance);
             
           
 			// Comment the following if you don't want to see the mouse
@@ -73,6 +80,12 @@ namespace WeakSven
 
         protected override void LoadContent()
         {
+
+            
+            circTex = Content.Load<Texture2D>("Test/circle");
+
+
+
             spriteBatch = new SpriteBatch(GraphicsDevice);
             font = Content.Load<SpriteFont>("font");
 
@@ -94,6 +107,7 @@ namespace WeakSven
 
             bgPic = Content.Load<Texture2D>("BG_Art/rest");
 
+            
 
             #region hovering
 
@@ -130,6 +144,7 @@ namespace WeakSven
 			if (Keyboard.GetState().IsKeyDown(Keys.Escape))
 				this.Exit();
 
+            
             playButton.Update(gameTime);
             text.Update(gameTime);
 
@@ -140,6 +155,11 @@ namespace WeakSven
             bg.X = bgPic.Width;
             bg.Y = bgPic.Height;
 
+            whirl.X = (Player.Instance.rect.X - 32);
+            whirl.Y = (Player.Instance.rect.Y - 32);
+
+            whirl2.X = (monster.rect.X - 32);
+            whirl2.Y = (monster.rect.Y - 32);
 
 			Player.Instance.Update(gameTime);
             
@@ -176,16 +196,9 @@ namespace WeakSven
             //    isHovering = false;
             #endregion
 
-            if (playButton.drawn && playerHitBox.Intersects(monsterHitBox))
+            if (!playButton.drawn)
             {
-                if (Player.Instance.rect.Intersects(monster.rect))
-                {
-                    Player.Instance.Health += 5;
-                }
-                if (playerHitBox.Intersects(monsterHitBox))
-                {
-                    Player.Instance.Health -= 1;
-                }
+                Combat.Instance.Update(gameTime);
             }
             
 
@@ -207,10 +220,13 @@ namespace WeakSven
 		
             if (!playButton.drawn)
             {
+                spriteBatch.Draw(circTex, whirl, Color.White);
+                spriteBatch.Draw(circTex, whirl2, Color.White);
                 spriteBatch.DrawString(font, "Player Hp: " + Player.Instance.Health.ToString(), new Vector2(10, 10), Color.Yellow);
                 spriteBatch.DrawString(font, "Monster HP: " + monster.Health.ToString(), new Vector2(640, 10), Color.Yellow);
                 monster.Draw(spriteBatch);
                 Player.Instance.Draw(spriteBatch);
+                
             }
 
             #region hovering 

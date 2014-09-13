@@ -8,7 +8,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\student\Documents\GitHub\XNAPWN\WeakSven\WeakSven\bin\x86\Debug\Content\Characters\Player.xnb</Output>
-      <Time>2014-09-11T18:29:16.2693672-07:00</Time>
+      <Time>2014-09-13T08:29:30.6978579-07:00</Time>
     </Item>
     <Item>
       <Source>Enemy\Monster.png</Source>
@@ -17,7 +17,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\student\Documents\GitHub\XNAPWN\WeakSven\WeakSven\bin\x86\Debug\Content\Enemy\Monster.xnb</Output>
-      <Time>2014-09-11T18:29:16.2713624-07:00</Time>
+      <Time>2014-09-13T08:29:30.6988581-07:00</Time>
     </Item>
     <Item>
       <Source>BG_Art\rest.png</Source>
@@ -26,7 +26,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\student\Documents\GitHub\XNAPWN\WeakSven\WeakSven\bin\x86\Debug\Content\BG_Art\rest.xnb</Output>
-      <Time>2014-09-11T18:29:16.2643792-07:00</Time>
+      <Time>2014-09-13T08:29:30.6928569-07:00</Time>
     </Item>
     <Item>
       <Source>Characters\djss2.png</Source>
@@ -35,7 +35,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\student\Documents\GitHub\XNAPWN\WeakSven\WeakSven\bin\x86\Debug\Content\Characters\djss2.xnb</Output>
-      <Time>2014-09-11T18:29:16.2683696-07:00</Time>
+      <Time>2014-09-13T08:29:30.6958575-07:00</Time>
     </Item>
     <Item>
       <Source>Audio\SFX\bing.wav</Source>
@@ -44,7 +44,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\student\Documents\GitHub\XNAPWN\WeakSven\WeakSven\bin\x86\Debug\Content\Audio\SFX\bing.xnb</Output>
-      <Time>2014-09-11T18:29:16.2633816-07:00</Time>
+      <Time>2014-09-13T08:29:30.6908565-07:00</Time>
     </Item>
     <Item>
       <Source>font.spritefont</Source>
@@ -53,7 +53,16 @@
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\student\Documents\GitHub\XNAPWN\WeakSven\WeakSven\bin\x86\Debug\Content\font.xnb</Output>
-      <Time>2014-09-11T18:29:16.551688-07:00</Time>
+      <Time>2014-09-13T08:29:30.7408665-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Test\circle.png</Source>
+      <Name>Test\circle</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\student\Documents\GitHub\XNAPWN\WeakSven\WeakSven\bin\x86\Debug\Content\Test\circle.xnb</Output>
+      <Time>2014-09-13T09:19:48.673377-07:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -94,7 +103,7 @@
       </Assembly>
       <Assembly>
         <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2014-09-11T18:19:12.9069208-07:00</Value>
+        <Value>2014-09-13T07:59:43.203998-07:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>
