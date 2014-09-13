@@ -22,8 +22,17 @@ namespace WeakSven
 
         Rectangle bg;
         Texture2D bgPic;
+
+        Texture2D levelBG;
+
+
         public int bgSpeed = 5;
         public Vector2 velo = Vector2.Zero; //for the background
+
+        Rectangle slideBar = new Rectangle(0, 50, 50, 300);
+        Texture2D statSheet;
+        bool isSliding = false;
+        float sideSpeed = 2.0f;
 
         int windowWidth;
         int windowHeight;
@@ -31,32 +40,6 @@ namespace WeakSven
         Texture2D titleBox;
         Button playButton;
         Text text;
-
-        Hover Hero;
-        Rectangle playName;
-
-
-        #region Hover and Slide
-        //MouseState mouseState;
-        //bool isHovering = false;
-
-        //Texture2D nameBox; //player's name 
-        //Texture2D badBox;  //enemy's name
-
-        //Text name;
-        //Text badName;
-
-        //Rectangle playName = new Rectangle(30, 0, 20, 300); // the box that would show up on hover
-        //Rectangle enemyName = new Rectangle(0, 0, 10, 300);// the box that would show up on hover
-
-        //bool isSliding = false; // for the rectangle with all player stats to slide from the edge of the screen
-        //Rectangle slideBar = new Rectangle(100, 0, 20, 300);
-        //Texture2D slid;
-        //float velocitySlide = 2.0f;
-
-        
-        #endregion
-
 
         SpriteFont font;
 
@@ -104,27 +87,14 @@ namespace WeakSven
             monster.Load(Content, "Enemy/Monster");
 
             bgPic = Content.Load<Texture2D>("BG_Art/rest");
+            levelBG = Content.Load<Texture2D>("BG_Art/bg2");
+
+            statSheet = Content.Load<Texture2D>("stat");
 
             builder.LoadTextures(Content);
 
             level1.LoadTextures(Content);
             level1.Load(1);
-
-            Hero = new Hover(playName, font, "Player");
-            #region hovering
-
-            //nameBox = new Texture2D(GraphicsDevice, 1, 1);
-            //nameBox.SetData(new Color[] { Color.White });
-            
-            //badBox = new Texture2D(GraphicsDevice, 1, 1);
-            //badBox.SetData(new Color[] { Color.White });
-            
-            //name = new Text(font, nameBox);
-            //name.Label = "Player";
-
-            //badName = new Text(font, badBox);
-            //badName.Label = "Enemy";
-            #endregion
 
         }
 
@@ -149,49 +119,23 @@ namespace WeakSven
             playButton.Update(gameTime);
             text.Update(gameTime);
 
-            //for hovering
-            //name.Update(gameTime);
-            //badName.Update(gameTime);
-
             bg.X = bgPic.Width;
             bg.Y = bgPic.Height;
 
+            bg.X = levelBG.Width;
+            bg.Y = levelBG.Height;
 
 			Player.Instance.Update(gameTime);
             
             monster.Update(gameTime);
-            Hero.Update(gameTime);
+
 
             playerHitBox.center.X = (Player.Instance.rect.Width / 2);
             playerHitBox.center.Y = (Player.Instance.rect.Height / 2);
 
             monsterHitBox.center.X = (monster.rect.Width / 2);
             monsterHitBox.center.Y = (monster.rect.Height / 2);
-            
-            #region hovering
-            //for hovering
-            //playName.Width = nameBox.Width;
-            //playName.Height = nameBox.Height;
 
-            //enemyName.Width = badBox.Width;
-            //enemyName.Height = badBox.Height;
-
-            //if (Keyboard.GetState().IsKeyDown(Keys.P))
-            //{
-            //    isSliding = true;
-            //}
-
-            
-            // HOVERING
-            //mouseState = Mouse.GetState();
-
-            //if (mouseState.X == Player.Instance.rect.X && 
-            //    mouseState.Y == Player.Instance.rect.Y)
-            //    isHovering = true;
-
-            //else
-            //    isHovering = false;
-            #endregion
 
             if (builderMode)
                 builder.Update(gameTime, previousKeyboard);
@@ -212,7 +156,13 @@ namespace WeakSven
             }
 
             previousKeyboard = Keyboard.GetState();
-            
+
+            if (Keyboard.GetState().IsKeyDown(Keys.P) ||
+                (Keyboard.GetState().IsKeyUp(Keys.P)))
+            {
+                isSliding = true;
+                sideSpeed++;
+            }
 
             base.Update(gameTime);
         }
@@ -232,6 +182,7 @@ namespace WeakSven
 		
             if (!playButton.drawn && builderMode == false)
             {
+                spriteBatch.Draw(levelBG, new Rectangle(0, 0, windowWidth, windowHeight), Color.White);
                 level1.Draw(spriteBatch);
 
                 spriteBatch.DrawString(font, "Player Hp: " + Player.Instance.Health.ToString(), new Vector2(10, 10), Color.Yellow);
@@ -243,30 +194,9 @@ namespace WeakSven
             if(builderMode == true)
                 builder.Draw(spriteBatch);
 
-            Hero.Draw(spriteBatch);
+            if (Keyboard.GetState().IsKeyDown(Keys.P))
+                spriteBatch.Draw(statSheet, slideBar, Color.White);
 
-            #region hovering 
-            //if (isHovering)
-            //{
-            //    spriteBatch.DrawString(font, "Player", new Vector2(300, 50),  Color.Pink);
-            //    spriteBatch.DrawString(font, "Enemy", new Vector2(300, 50), Color.Pink);
-
-            //    //spriteBatch.Draw(nameBox, playName, Color.LightBlue);
-            //    //spriteBatch.Draw(badBox, enemyName, Color.Red);
-
-
-            //}
-#endregion
-
-            #region sliding
-            //if (isSliding)
-            //{
-            //    velocitySlide++; 
-            //    spriteBatch.Draw(slid, slideBar, Color.Pink);
-            //}
-            #endregion
-            
-            
 
             spriteBatch.End();
             base.Draw(gameTime);
