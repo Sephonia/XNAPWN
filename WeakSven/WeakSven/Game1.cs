@@ -25,6 +25,7 @@ namespace WeakSven
         Rectangle whirl2 = new Rectangle(0, 0, 128, 128);
         Texture2D circTex;
 
+        KeyboardState previousKeyboard;
 
         Rectangle bg;
         Texture2D bgPic;
@@ -114,6 +115,13 @@ namespace WeakSven
 
             builder.LoadTextures(Content);
 
+            statSheet = Content.Load<Texture2D>("stat");
+
+            builder.LoadTextures(Content);
+
+            level1.LoadTextures(Content);
+            level1.Load(1);
+
             level1.LoadTextures(Content);
             level1.Load(1);
 
@@ -159,6 +167,8 @@ namespace WeakSven
             bg.Y = levelBG.Height;
 
             Player.Instance.Update(gameTime);
+            bg.X = levelBG.Width;
+            bg.Y = levelBG.Height;
 
             monster.Update(gameTime);
 
@@ -181,6 +191,17 @@ namespace WeakSven
                 Combat.Instance.Update(gameTime);
 
                 if (!playButton.drawn && playerHitBox.Intersects(monsterHitBox))
+
+
+            if (builderMode)
+                builder.Update(gameTime, previousKeyboard);
+
+
+
+            if (!playButton.drawn && playerHitBox.Intersects(monsterHitBox))
+            {
+
+                if (Player.Instance.rect.Intersects(monster.rect))
                 {
 
                     if (Player.Instance.rect.Intersects(monster.rect))
@@ -202,6 +223,16 @@ namespace WeakSven
                     isSliding = true;
                     sideSpeed++;
                 }
+            }
+
+            previousKeyboard = Keyboard.GetState();
+
+            if (Keyboard.GetState().IsKeyDown(Keys.P) ||
+                (Keyboard.GetState().IsKeyUp(Keys.P)))
+            {
+                isSliding = true;
+                sideSpeed++;
+            }
 
                 base.Update(gameTime);
             }
@@ -229,6 +260,9 @@ namespace WeakSven
                 spriteBatch.Draw(levelBG, new Rectangle(0, 0, windowWidth, windowHeight), Color.White);
                 level1.Draw(spriteBatch);
 
+
+                spriteBatch.Draw(levelBG, new Rectangle(0, 0, windowWidth, windowHeight), Color.White);
+                level1.Draw(spriteBatch);
 
                 spriteBatch.DrawString(font, "Player Hp: " + Player.Instance.Health.ToString(), new Vector2(10, 10), Color.Yellow);
                 spriteBatch.DrawString(font, "Monster HP: " + monster.Health.ToString(), new Vector2(640, 10), Color.Yellow);
