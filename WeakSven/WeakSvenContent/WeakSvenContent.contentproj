@@ -38,7 +38,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Audio\BGM\" />
-    <Folder Include="Graphics\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Audio\SFX\bing.wav">
@@ -64,13 +63,6 @@
   <ItemGroup>
     <Compile Include="BG_Art\rest.png">
       <Name>rest</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Characters\djss2.png">
-      <Name>djss2</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -110,6 +102,11 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
+    <Compile Include="Graphics\door.png">
+      <Name>door</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
     <Compile Include="Graphics\earth.png">
       <Name>earth</Name>
       <Importer>TextureImporter</Importer>
@@ -120,18 +117,12 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
+    <Content Include="level1.txt">
+      <Name>level1</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Compile Include="Graphics\rock.png">
       <Name>rock</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Graphics\window.png">
-      <Name>window</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Graphics\door.png">
-      <Name>door</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -140,15 +131,21 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
+    <Compile Include="Graphics\swamp.png">
+      <Name>swamp</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
     <Compile Include="Graphics\water.png">
       <Name>water</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Content Include="level1.txt">
-      <Name>level1</Name>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Compile Include="Graphics\window.png">
+      <Name>window</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
     <Compile Include="stat.jpg">
       <Name>stat</Name>
       <Importer>TextureImporter</Importer>

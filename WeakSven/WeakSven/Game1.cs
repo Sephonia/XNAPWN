@@ -70,7 +70,6 @@ namespace WeakSven
 
             //level has started
             Combat.Instance.AddCombatant(monster);
-            //Combat.Instance.AddCombatant(Player.Instance);
             
           
 		// Comment the following if you don't want to see the mouse
@@ -116,11 +115,6 @@ namespace WeakSven
             builder.LoadTextures(Content);
 
             statSheet = Content.Load<Texture2D>("stat");
-
-            builder.LoadTextures(Content);
-
-            level1.LoadTextures(Content);
-            level1.Load(1);
 
             level1.LoadTextures(Content);
             level1.Load(1);
@@ -180,8 +174,8 @@ namespace WeakSven
             monsterHitBox.center.Y = (monster.rect.Height / 2);
 
 
-           // if (builderMode)
-             //   builder.Update(gameTime, previousKeyboard);
+            if (builderMode)
+                builder.Update(gameTime, previousKeyboard);
 
 
 
@@ -215,7 +209,7 @@ namespace WeakSven
 
                 }
 
-                //previousKeyboard = Keyboard.GetState();
+                previousKeyboard = Keyboard.GetState();
 
                 if (Keyboard.GetState().IsKeyDown(Keys.P) ||
                     (Keyboard.GetState().IsKeyUp(Keys.P)))

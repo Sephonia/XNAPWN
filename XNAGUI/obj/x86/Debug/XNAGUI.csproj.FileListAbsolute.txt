@@ -1,6 +1,5 @@
 C:\Users\student\Documents\GitHub\XNAPWN\XNAGUI\bin\x86\Debug\XNAGUI.dll
 C:\Users\student\Documents\GitHub\XNAPWN\XNAGUI\bin\x86\Debug\XNAGUI.pdb
-C:\Users\student\Documents\GitHub\XNAPWN\XNAGUI\obj\x86\Debug\XNAGUI.csprojResolveAssemblyReference.cache
 C:\Users\student\Documents\GitHub\XNAPWN\XNAGUI\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\student\Documents\GitHub\XNAPWN\XNAGUI\obj\x86\Debug\XNAGUI.dll
 C:\Users\student\Documents\GitHub\XNAPWN\XNAGUI\obj\x86\Debug\XNAGUI.pdb
