@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 namespace WeakSven
 {
 	class InteractiveCharacter : Character
@@ -9,7 +10,7 @@ namespace WeakSven
 		public int Defense { get; protected set; }
 		public int Money { get; protected set; }
 
-     
+        
 
         public InteractiveCharacter()
             : base()
@@ -17,7 +18,5 @@ namespace WeakSven
 
 
         }
-       
-        
 	}
 }

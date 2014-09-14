@@ -32,7 +32,7 @@ namespace WeakSven
         Button playButton;
         Text text;
 
-        Hover Hero;
+        //Hover Hero;
         Rectangle playName;
 
 
@@ -110,7 +110,7 @@ namespace WeakSven
             level1.LoadTextures(Content);
             level1.Load(1);
 
-            Hero = new Hover(playName, font, "Player");
+            //Hero = new Hover(playName, font, "Player");
             #region hovering
 
             //nameBox = new Texture2D(GraphicsDevice, 1, 1);
@@ -149,18 +149,16 @@ namespace WeakSven
             playButton.Update(gameTime);
             text.Update(gameTime);
 
-            //for hovering
-            //name.Update(gameTime);
-            //badName.Update(gameTime);
-
             bg.X = bgPic.Width;
             bg.Y = bgPic.Height;
 
-
-			Player.Instance.Update(gameTime);
             
+            
+            Player.Instance.Update(gameTime);
+
+            level1.Update(monster, gameTime);   
+
             monster.Update(gameTime);
-            Hero.Update(gameTime);
 
             playerHitBox.center.X = (Player.Instance.rect.Width / 2);
             playerHitBox.center.Y = (Player.Instance.rect.Height / 2);
@@ -196,11 +194,8 @@ namespace WeakSven
             if (builderMode)
                 builder.Update(gameTime, previousKeyboard);
 
-
-
             if (!playButton.drawn && playerHitBox.Intersects(monsterHitBox))
             {
-
                 if (Player.Instance.rect.Intersects(monster.rect))
                 {
                     Player.Instance.Health += 5;
@@ -243,7 +238,7 @@ namespace WeakSven
             if(builderMode == true)
                 builder.Draw(spriteBatch);
 
-            Hero.Draw(spriteBatch);
+            //Hero.Draw(spriteBatch);
 
             #region hovering 
             //if (isHovering)

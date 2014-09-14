@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -12,6 +13,7 @@ namespace WeakSven
     {
         public List<Tex> Texes { get; private set; }
         public Dictionary<char, Texture2D> Textures { get; private set; }
+        public bool pCollides = false, eCollides = false;
 
         public int CurrentLevel { get; private set; }
 
@@ -61,6 +63,18 @@ namespace WeakSven
                 }
 
                 y += 25;
+            }
+        }
+
+        public void Update(Enemy enem, GameTime gameTime)
+        {
+            foreach (Tex b in Texes)
+            {
+                if (Player.Instance.rect.Intersects(b.Rect))
+                    Player.Instance.MoveBack();
+
+                if (enem.rect.Intersects(b.Rect))
+                    enem.Velocity = Vector2.Zero;
             }
         }
 

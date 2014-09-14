@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeakSven", "WeakSven\WeakSven\WeakSven.csproj", "{11F80828-5084-41C5-8B4D-EE9D29BA9141}"
 EndProject
-Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "WeakSvenContent", "WeakSven\WeakSvenContent\WeakSvenContent.contentproj", "{A3936EFA-AB81-4292-B172-4B675DF12269}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeakSvenContent", "WeakSven\WeakSvenContent\WeakSvenContent.contentproj", "{A3936EFA-AB81-4292-B172-4B675DF12269}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
