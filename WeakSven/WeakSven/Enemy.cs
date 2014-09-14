@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -7,7 +8,7 @@ namespace WeakSven
 	class Enemy : InteractiveCharacter
 	{
 
-       
+        Random rnd = new Random();
         protected int health = 100;
         public int Health
         {
@@ -25,11 +26,13 @@ namespace WeakSven
                 Speed = 0.05f;
         }
 
+        
+
         public override void Load(ContentManager Content, string imageFile)
         {
             base.Load(Content, imageFile);
             
-            //bing.Sound = Content.Load<SoundEffect>("Audio/SFX/bing");
+           
         }
 
 		public override void Update(GameTime gameTime)
@@ -39,7 +42,7 @@ namespace WeakSven
 
             else
                 Velocity = Vector2.Zero;
-			// TODO:  AI here
+            // TODO:  AI here 
            
 			base.Update(gameTime);
 		}

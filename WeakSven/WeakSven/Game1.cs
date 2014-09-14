@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using XNAGUI;
 
 namespace WeakSven
 {
@@ -9,21 +10,36 @@ namespace WeakSven
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        Button2 button = new Button2(new Rectangle(0, 0, 200, 50));
+
         Level level1 = new Level();
         LevelBuilder builder = new LevelBuilder();
 
         private bool builderMode = false;
 
-        Enemy monster = new Enemy();        
-        Circle playerHitBox = new Circle(0,0,64.0f);
-        Circle monsterHitBox = new Circle(0,0,64.0f);
+        Enemy monster = new Enemy();
+        Circle playerHitBox = new Circle(0, 0, 64.0f);
+        Circle monsterHitBox = new Circle(0, 0, 64.0f);
+
+        Rectangle whirl = new Rectangle(0, 0, 128, 128);
+        Rectangle whirl2 = new Rectangle(0, 0, 128, 128);
+        Texture2D circTex;
 
         KeyboardState previousKeyboard;
 
         Rectangle bg;
         Texture2D bgPic;
+
+        Texture2D levelBG;
+
+
         public int bgSpeed = 5;
         public Vector2 velo = Vector2.Zero; //for the background
+
+        Rectangle slideBar = new Rectangle(0, 50, 50, 300);
+        Texture2D statSheet;
+        bool isSliding = false;
+        float sideSpeed = 2.0f;
 
         int windowWidth;
         int windowHeight;
@@ -31,31 +47,8 @@ namespace WeakSven
         Texture2D titleBox;
         Button playButton;
         Text text;
-
         //Hover Hero;
         Rectangle playName;
-
-
-        #region Hover and Slide
-        //MouseState mouseState;
-        //bool isHovering = false;
-
-        //Texture2D nameBox; //player's name 
-        //Texture2D badBox;  //enemy's name
-
-        //Text name;
-        //Text badName;
-
-        //Rectangle playName = new Rectangle(30, 0, 20, 300); // the box that would show up on hover
-        //Rectangle enemyName = new Rectangle(0, 0, 10, 300);// the box that would show up on hover
-
-        //bool isSliding = false; // for the rectangle with all player stats to slide from the edge of the screen
-        //Rectangle slideBar = new Rectangle(100, 0, 20, 300);
-        //Texture2D slid;
-        //float velocitySlide = 2.0f;
-
-        
-        #endregion
 
 
         SpriteFont font;
@@ -67,6 +60,9 @@ namespace WeakSven
             graphics.IsFullScreen = false;
 
             // if you don't want full screen play with these values.
+            graphics.PreferredBackBufferHeight = 1200;
+            graphics.PreferredBackBufferWidth = 1200;
+
             graphics.PreferredBackBufferHeight = 600;
             graphics.PreferredBackBufferWidth = 800;
         }
@@ -74,9 +70,13 @@ namespace WeakSven
         protected override void Initialize()
         {
             base.Initialize();
-          
-			// Comment the following if you don't want to see the mouse
-			IsMouseVisible = true;
+
+            //level has started
+            Combat.Instance.AddCombatant(monster);
+
+
+            // Comment the following if you don't want to see the mouse
+            IsMouseVisible = true;
 
             windowWidth = Window.ClientBounds.Width;
             windowHeight = Window.ClientBounds.Height;
@@ -84,6 +84,11 @@ namespace WeakSven
 
         protected override void LoadContent()
         {
+            circTex = Content.Load<Texture2D>("Test/circle");
+
+            UIManager.Init(GraphicsDevice, Content.Load<SpriteFont>("Font"));
+            button.Text = "Click Me!";
+
             spriteBatch = new SpriteBatch(GraphicsDevice);
             font = Content.Load<SpriteFont>("font");
 
@@ -96,36 +101,31 @@ namespace WeakSven
             text = new Text(font, titleBox);
             text.Label = "FINAL HOTSAUCE QUEST-RIM";
 
-            playButton.clicked += playButton_clicked; 
+            playButton.clicked += playButton_clicked;
 
             font = Content.Load<SpriteFont>("font");
 
-			Player.Instance.Load(Content, "Characters/Player");
+            Player.Instance.Load(Content, "Characters/Player");
             monster.Load(Content, "Enemy/Monster");
 
             bgPic = Content.Load<Texture2D>("BG_Art/rest");
+            levelBG = Content.Load<Texture2D>("BG_Art/bg3");
+
+            statSheet = Content.Load<Texture2D>("stat");
 
             builder.LoadTextures(Content);
+
+            statSheet = Content.Load<Texture2D>("stat");
 
             level1.LoadTextures(Content);
             level1.Load(1);
 
-            //Hero = new Hover(playName, font, "Player");
-            #region hovering
+            button.onClick += button_onClick;
+        }
 
-            //nameBox = new Texture2D(GraphicsDevice, 1, 1);
-            //nameBox.SetData(new Color[] { Color.White });
-            
-            //badBox = new Texture2D(GraphicsDevice, 1, 1);
-            //badBox.SetData(new Color[] { Color.White });
-            
-            //name = new Text(font, nameBox);
-            //name.Label = "Player";
-
-            //badName = new Text(font, badBox);
-            //badName.Label = "Enemy";
-            #endregion
-
+        void button_onClick(Component sender)
+        {
+            ((Button2)sender).Text = "Clicked!";
         }
 
         void playButton_clicked(UI sender)
@@ -139,12 +139,11 @@ namespace WeakSven
 
         protected override void Update(GameTime gameTime)
         {
-
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-			if (Keyboard.GetState().IsKeyDown(Keys.Escape))
-				this.Exit();
+            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
+                this.Exit();
 
             playButton.Update(gameTime);
             text.Update(gameTime);
@@ -152,11 +151,21 @@ namespace WeakSven
             bg.X = bgPic.Width;
             bg.Y = bgPic.Height;
 
-            
-            
             Player.Instance.Update(gameTime);
 
-            level1.Update(monster, gameTime);   
+            level1.Update(monster, gameTime);
+
+            monster.Update(gameTime);
+
+            whirl.X = (Player.Instance.rect.X - 32);
+            whirl.Y = (Player.Instance.rect.Y - 32);
+
+            whirl2.X = (monster.rect.X - 32);
+            whirl2.Y = (monster.rect.Y - 32);
+
+            Player.Instance.Update(gameTime);
+            bg.X = levelBG.Width;
+            bg.Y = levelBG.Height;
 
             monster.Update(gameTime);
 
@@ -165,49 +174,28 @@ namespace WeakSven
 
             monsterHitBox.center.X = (monster.rect.Width / 2);
             monsterHitBox.center.Y = (monster.rect.Height / 2);
-            
-            #region hovering
-            //for hovering
-            //playName.Width = nameBox.Width;
-            //playName.Height = nameBox.Height;
-
-            //enemyName.Width = badBox.Width;
-            //enemyName.Height = badBox.Height;
-
-            //if (Keyboard.GetState().IsKeyDown(Keys.P))
-            //{
-            //    isSliding = true;
-            //}
-
-            
-            // HOVERING
-            //mouseState = Mouse.GetState();
-
-            //if (mouseState.X == Player.Instance.rect.X && 
-            //    mouseState.Y == Player.Instance.rect.Y)
-            //    isHovering = true;
-
-            //else
-            //    isHovering = false;
-            #endregion
 
             if (builderMode)
                 builder.Update(gameTime, previousKeyboard);
 
-            if (!playButton.drawn && playerHitBox.Intersects(monsterHitBox))
+            if (!playButton.drawn)
             {
-                if (Player.Instance.rect.Intersects(monster.rect))
+                Combat.Instance.Update(gameTime);
+
+                if (builderMode)
+                    builder.Update(gameTime, previousKeyboard);
+
+                previousKeyboard = Keyboard.GetState();
+
+                if (Keyboard.GetState().IsKeyDown(Keys.P) ||
+                    (Keyboard.GetState().IsKeyUp(Keys.P)))
                 {
-                    Player.Instance.Health += 5;
-                }
-                if (playerHitBox.Intersects(monsterHitBox))
-                {
-                    Player.Instance.Health -= 1;
+                    isSliding = true;
+                    sideSpeed++;
                 }
             }
 
             previousKeyboard = Keyboard.GetState();
-            
 
             base.Update(gameTime);
         }
@@ -215,53 +203,36 @@ namespace WeakSven
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-			spriteBatch.Begin();
-
-            spriteBatch.Draw(bgPic, new Rectangle(0, 0, windowWidth, windowHeight), Color.White);
+            spriteBatch.Begin();
 
             if (playButton.drawn && builderMode == false)
             {
+                spriteBatch.Draw(bgPic, new Rectangle(0, 0, windowWidth, windowHeight), Color.White);
                 playButton.Draw(spriteBatch);
                 text.Draw(spriteBatch);
             }
-		
+
             if (!playButton.drawn && builderMode == false)
             {
+                spriteBatch.Draw(circTex, whirl, Color.White);
+                spriteBatch.Draw(circTex, whirl2, Color.White);
+
+                spriteBatch.Draw(levelBG, new Rectangle(0, 0, windowWidth, windowHeight), Color.White);
+                
                 level1.Draw(spriteBatch);
 
                 spriteBatch.DrawString(font, "Player Hp: " + Player.Instance.Health.ToString(), new Vector2(10, 10), Color.Yellow);
                 spriteBatch.DrawString(font, "Monster HP: " + monster.Health.ToString(), new Vector2(640, 10), Color.Yellow);
                 monster.Draw(spriteBatch);
+
                 Player.Instance.Draw(spriteBatch);
             }
 
-            if(builderMode == true)
+            if (builderMode == true)
                 builder.Draw(spriteBatch);
 
-            //Hero.Draw(spriteBatch);
-
-            #region hovering 
-            //if (isHovering)
-            //{
-            //    spriteBatch.DrawString(font, "Player", new Vector2(300, 50),  Color.Pink);
-            //    spriteBatch.DrawString(font, "Enemy", new Vector2(300, 50), Color.Pink);
-
-            //    //spriteBatch.Draw(nameBox, playName, Color.LightBlue);
-            //    //spriteBatch.Draw(badBox, enemyName, Color.Red);
-
-
-            //}
-#endregion
-
-            #region sliding
-            //if (isSliding)
-            //{
-            //    velocitySlide++; 
-            //    spriteBatch.Draw(slid, slideBar, Color.Pink);
-            //}
-            #endregion
-            
-            
+            if (Keyboard.GetState().IsKeyDown(Keys.P))
+                spriteBatch.Draw(statSheet, slideBar, Color.White);
 
             spriteBatch.End();
             base.Draw(gameTime);

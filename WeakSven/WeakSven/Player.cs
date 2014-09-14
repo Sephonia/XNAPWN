@@ -33,8 +33,6 @@ namespace WeakSven
 
         public void SetName(string name) { Name = name; }
 
-        
-
         protected int health = 100;
         public int Health
         {
@@ -46,6 +44,7 @@ namespace WeakSven
                     health = 0;
             }
         }
+
 
         public override void Load(ContentManager Content, string imageFile)
         {
@@ -83,11 +82,7 @@ namespace WeakSven
             }
             else
                 Velocity = Vector2.Zero;
-
-            base.Update(gameTime);
         }
-
-
     }
 
 }

@@ -4,6 +4,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeakSven", "WeakSven\WeakSven\WeakSven.csproj", "{11F80828-5084-41C5-8B4D-EE9D29BA9141}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeakSvenContent", "WeakSven\WeakSvenContent\WeakSvenContent.contentproj", "{A3936EFA-AB81-4292-B172-4B675DF12269}"
+<<<<<<< HEAD
+=======
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XNAGUI", "XNAGUI\XNAGUI.csproj", "{7A0870BC-2470-43C7-A57C-CE6E097F0217}"
+>>>>>>> bbe19b7bf3532117d2e1214fe17999d96272846d
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,6 +22,10 @@ Global
 		{11F80828-5084-41C5-8B4D-EE9D29BA9141}.Release|x86.Build.0 = Release|x86
 		{A3936EFA-AB81-4292-B172-4B675DF12269}.Debug|x86.ActiveCfg = Debug|x86
 		{A3936EFA-AB81-4292-B172-4B675DF12269}.Release|x86.ActiveCfg = Release|x86
+		{7A0870BC-2470-43C7-A57C-CE6E097F0217}.Debug|x86.ActiveCfg = Debug|x86
+		{7A0870BC-2470-43C7-A57C-CE6E097F0217}.Debug|x86.Build.0 = Debug|x86
+		{7A0870BC-2470-43C7-A57C-CE6E097F0217}.Release|x86.ActiveCfg = Release|x86
+		{7A0870BC-2470-43C7-A57C-CE6E097F0217}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -75,6 +75,7 @@
     <Compile Include="Animation.cs" />
     <Compile Include="AudioSFX.cs" />
     <Compile Include="Button.cs" />
+    <Compile Include="Combat.cs" />
     <Compile Include="Level.cs" />
     <Compile Include="LevelBuilder.cs" />
     <Compile Include="Tex.cs" />
@@ -97,6 +98,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\XNAGUI\XNAGUI.csproj">
+      <Project>{7a0870bc-2470-43c7-a57c-ce6e097f0217}</Project>
+      <Name>XNAGUI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WeakSvenContent\WeakSvenContent.contentproj">
       <Name>WeakSvenContent</Name>
       <XnaReferenceType>Content</XnaReferenceType>
