@@ -177,8 +177,8 @@ namespace WeakSven
                 texIndex = '0';
 
 
-            gridX = (Mouse.GetState().X / 25) * 25;
-            gridY = (Mouse.GetState().Y / 25) * 25;
+            gridX = (Mouse.GetState().X / 64) * 64;
+            gridY = (Mouse.GetState().Y / 64) * 64;
 
             // Checks to make sure we have clicked
             if (texIndex != '0' &&
@@ -206,7 +206,7 @@ namespace WeakSven
             {
                 spriteBatch.Draw(
                     Textures[p.index],
-                    new Rectangle(p.x, p.y, 25, 25),
+                    new Rectangle(p.x, p.y, 64, 64),
                     Color.White
                     );
             }
@@ -215,7 +215,7 @@ namespace WeakSven
             {
                 spriteBatch.Draw(
                     Textures[texIndex],
-                    new Rectangle(gridX, gridY, 25, 25),
+                    new Rectangle(gridX, gridY, 64, 64),
                     Color.White
                     );
             }
@@ -238,8 +238,8 @@ namespace WeakSven
                     maxY = p.y;
             }
 
-            maxX = (maxX / 25) + 1;
-            maxY = (maxY / 25) + 1;
+            maxX = (maxX / 64) + 1;
+            maxY = (maxY / 64) + 1;
 
             for (int y = 0; y < maxY; y++)
             {
@@ -254,8 +254,8 @@ namespace WeakSven
             int tmpIndex = 0;
             foreach (PaintObject p in paintings)
             {
-                int x = p.x / 25;
-                int y = p.y / 25;
+                int x = p.x / 64;
+                int y = p.y / 64;
 
                 tmpIndex = (y * maxX) + x + y;
                 data = data.Remove(tmpIndex, 1).Insert(tmpIndex, p.index.ToString());

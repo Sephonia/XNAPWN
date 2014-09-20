@@ -43,13 +43,6 @@ namespace WeakSven
             }
         }
 
-<<<<<<< HEAD
-=======
-        
-
-        
->>>>>>> 97142af37102a392407ffc5bfd1b944699266cbe
-
         public override void Load(ContentManager Content, string imageFile)
         {
             base.Load(Content, imageFile);
