@@ -47,12 +47,5 @@ Content\Graphics\window.xnb
 Content\Audio\SFX\bing.xnb
 Content\font.xnb
 Content\BG_Art\bg2.jpg
-Content\Level\level1.txt
-Content\Level\level2.txt
-Content\Level\level3.txt
-Content\Level\level4.txt
-Content\Level\level5.txt
+Content\Level\Level1.txt
 Content\Level\level6.txt
-Content\Level\level7.txt
-Content\Level\level8.txt
-Content\Level\level9.txt

@@ -266,10 +266,6 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Content Include="Level\level1.txt">
-      <Name>level1</Name>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Compile Include="Graphics\rock.png">
       <Name>rock</Name>
       <Importer>TextureImporter</Importer>
@@ -295,36 +291,12 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Content Include="Level\level2.txt">
-      <Name>level2</Name>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Level\level3.txt">
-      <Name>level3</Name>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Level\level4.txt">
-      <Name>level4</Name>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Level\level5.txt">
-      <Name>level5</Name>
+    <Content Include="Level\Level1.txt">
+      <Name>Level1</Name>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Level\level6.txt">
       <Name>level6</Name>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Level\level7.txt">
-      <Name>level7</Name>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Level\level8.txt">
-      <Name>level8</Name>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Level\level9.txt">
-      <Name>level9</Name>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

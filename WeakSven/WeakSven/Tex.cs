@@ -15,7 +15,7 @@ namespace WeakSven
         public Tex(Texture2D texture, int x, int y)
         {
             img = texture;
-            Rect = new Rectangle(x, y, 25, 25);
+            Rect = new Rectangle(x, y, 64, 64);
         }
 
         public void Draw(SpriteBatch spriteBatch)

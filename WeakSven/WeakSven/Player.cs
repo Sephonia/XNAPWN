@@ -24,7 +24,7 @@ namespace WeakSven
         }
 
 
-        private Player() : base() { Speed = 0.75f; }
+        private Player() : base() { Speed = 2.00f; }
         #endregion
 
         //public AudioSFX bing = new AudioSFX();
@@ -43,17 +43,19 @@ namespace WeakSven
             }
         }
 
+        public KeyboardState lastKey;
+        private bool movingX = false;
+        private bool movingY = false;
+
         public override void Load(ContentManager Content, string imageFile)
         {
             base.Load(Content, imageFile);
 
-
-            //bing.Sound = Content.Load<SoundEffect>("Audio/SFX/bing");
         }
 
         public override void Update(GameTime gameTime)
         {
-
+            movingX = movingY = false;
 
             // TODO:  Change player controls to fit your game
            
@@ -62,25 +64,37 @@ namespace WeakSven
                 Keyboard.GetState().IsKeyDown(Keys.Up))
             {
                 Velocity.Y = -Speed;
+                movingY = true;
             }
-            else if (Keyboard.GetState().IsKeyDown(Keys.A) ||
+
+            if (Keyboard.GetState().IsKeyDown(Keys.A) ||
                 Keyboard.GetState().IsKeyDown(Keys.Left))
             {
                 Velocity.X = -Speed;
+                movingX = true;
             }
-            else if (Keyboard.GetState().IsKeyDown(Keys.S) ||
+
+            if (Keyboard.GetState().IsKeyDown(Keys.S) ||
                 Keyboard.GetState().IsKeyDown(Keys.Down))
             {
                 Velocity.Y = Speed;
+                movingY = true;
             }
-            else if (Keyboard.GetState().IsKeyDown(Keys.D) ||
+
+            if (Keyboard.GetState().IsKeyDown(Keys.D) ||
                 Keyboard.GetState().IsKeyDown(Keys.Right))
             {
                 Velocity.X = Speed;
+                movingX = true;
             }
-            else
-                Velocity = Vector2.Zero;
+           
+            if (!movingX)
+                Velocity.X  = 0;
 
+            if (!movingY)
+                Velocity.Y = 0;
+
+            lastKey = Keyboard.GetState();
             base.Update(gameTime);
         }
     }
