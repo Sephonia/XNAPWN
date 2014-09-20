@@ -290,6 +290,10 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
+    <Content Include="Level\level2.txt">
+      <Name>level2</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Level\level3.txt">
       <Name>level3</Name>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

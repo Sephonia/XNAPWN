@@ -117,8 +117,8 @@ namespace WeakSven
         {
             foreach (Tex b in Texes)
             {
-                if (Player.Instance.rect.Intersects(b.Rect))
-                    Player.Instance.MoveBack();
+               // if (Player.Instance.rect.Intersects(b.Rect))
+                 //   Player.Instance.MoveBack();
 
                 if (enem.rect.Intersects(b.Rect))
                     enem.Velocity = Vector2.Zero;
