@@ -1,4 +1,1 @@
-C:\Users\Rich\Documents\GitHub\XNAPWN\WeakSven\WeakSvenContent\obj\x86\Debug\WeakSvenContent.contentprojResolveAssemblyReference.cache
-C:\Users\Monica\Documents\GitHub\XNAPWN\WeakSven\WeakSvenContent\obj\x86\Debug\WeakSvenContent.contentprojResolveAssemblyReference.cache
 C:\Users\student\Documents\GitHub\XNAPWN\WeakSven\WeakSvenContent\obj\x86\Debug\WeakSvenContent.contentprojResolveAssemblyReference.cache
-C:\Users\student\Desktop\XNAPWN\WeakSven\WeakSvenContent\obj\x86\Debug\WeakSvenContent.contentprojResolveAssemblyReference.cache

@@ -1,3 +1,4 @@
+using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -89,6 +90,8 @@ namespace WeakSven
             font = Content.Load<SpriteFont>("font");
 
             Player.Instance.Load(Content, "Characters/Player");
+            Player.Instance.Position = new Vector2(100, 100);
+
             monster.Load(Content, "Enemy/Monster");
 
             bgPic = Content.Load<Texture2D>("BG_Art/bg4");
@@ -96,6 +99,7 @@ namespace WeakSven
 
             builder.LoadTextures(Content);
             level1.LoadTextures(Content);
+
             level1.Load(6);
             button.onClick += button_onClick;
         }
@@ -175,8 +179,9 @@ namespace WeakSven
             }
 
             if (!playButton.drawn && builderMode == false)
+
             {               
-                spriteBatch.Draw(levelBG, new Rectangle(0, 0, windowWidth, windowHeight), Color.Black);                
+                spriteBatch.Draw(levelBG, new Rectangle(0, 0, windowWidth, windowHeight), Color.Black);
                 level1.Draw(spriteBatch);
 
                 spriteBatch.DrawString(font, "Player Hp: " + Player.Instance.Health.ToString(), new Vector2(10, 10), Color.Yellow);
