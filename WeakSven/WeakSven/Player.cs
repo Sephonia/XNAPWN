@@ -24,7 +24,7 @@ namespace WeakSven
         }
 
 
-        private Player() : base() { Speed = 0.75f; }
+        private Player() : base() { Speed = 2.00f; }
         #endregion
 
         //public AudioSFX bing = new AudioSFX();
@@ -52,8 +52,6 @@ namespace WeakSven
         {
             base.Load(Content, imageFile);
 
-
-            //bing.Sound = Content.Load<SoundEffect>("Audio/SFX/bing");
         }
 
         public override void Update(GameTime gameTime)

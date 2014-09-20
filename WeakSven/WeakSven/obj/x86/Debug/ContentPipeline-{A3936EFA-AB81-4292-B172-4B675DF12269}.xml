@@ -362,6 +362,15 @@
       <Time>2014-09-20T09:59:53.3490899-07:00</Time>
     </Item>
     <Item>
+      <Source>Enemy\pepper.png</Source>
+      <Name>Enemy\pepper</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\student\Documents\GitHub\XNAPWN\WeakSven\WeakSven\bin\x86\Debug\Content\Enemy\pepper.xnb</Output>
+      <Time>2014-09-20T14:50:35.1132619-07:00</Time>
+    </Item>
+    <Item>
       <Source>Graphics\rock.png</Source>
       <Name>Graphics\rock</Name>
       <Importer>TextureImporter</Importer>

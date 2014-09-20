@@ -33,13 +33,12 @@ namespace WeakSven
         Texture2D levelBG;
 
 
-        public int bgSpeed = 5;
         public Vector2 velo = Vector2.Zero; //for the background
 
         Rectangle slideBar = new Rectangle(0, 50, 50, 300);      
 
-        int windowWidth;
-        int windowHeight;
+        public int windowWidth;
+        public int windowHeight;
 
         Texture2D titleBox;
         Button playButton;
@@ -163,6 +162,24 @@ namespace WeakSven
             }
 
             previousKeyboard = Keyboard.GetState();
+            #region Binding characters to screen bounds
+            if (Player.Instance.rect.X + Player.Instance.rect.Width > windowWidth)
+                Player.Instance.MoveBack();
+            if (Player.Instance.rect.X < 0)
+                Player.Instance.MoveBack();
+            if (Player.Instance.rect.Y + Player.Instance.rect.Height > windowHeight)
+                Player.Instance.MoveBack();
+            if (Player.Instance.rect.Y < 0)
+                Player.Instance.MoveBack();
+            if (monster.rect.X + monster.rect.Width > windowWidth)
+                monster.MoveBack();
+            if (monster.rect.X < 0)
+                monster.MoveBack();
+            if (monster.rect.Y + monster.rect.Height > windowHeight)
+                monster.MoveBack();
+            if (monster.rect.Y < 0)
+                monster.MoveBack();
+            #endregion
 
             base.Update(gameTime);
         }

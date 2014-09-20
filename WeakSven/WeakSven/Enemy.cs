@@ -7,7 +7,19 @@ namespace WeakSven
 {
 	class Enemy : InteractiveCharacter
 	{
+        //For Test Purposes ONLY!
+       /* private static Enemy instance = null;
+        public static Enemy Instance
+        {
+            get
+            {
+                if (instance == null)
+                    instance = new Enemy();
 
+                return instance;
+            }
+        }*/
+        //For Test Purposes ONLY!
         Random rnd = new Random();
         private int num;            // variable to hold our random number.
         protected bool ranCheck = false; // a boolean to see if we've grabbed a random number
@@ -27,7 +39,7 @@ namespace WeakSven
 
         public Enemy()
             : base() {
-                Speed = 0.05f;
+                Speed = 0.75f;
         }
 
         public void RandDir(GameTime gameTime) 
@@ -38,19 +50,18 @@ namespace WeakSven
                 ranCheck = true;                // setting our check to true so we no longer set new random numbers to our num variable.
             }                                   // if else chain allows us to evaluate down the line for conditions in a linear range, E.X. below.
             if (num < 25)                       // anything below 25, this evalutes and everything else is ignored.
-                Velocity.X = Speed * 20;
+                Velocity.X = Speed * 5;
             else if (num < 50)                  // anything above 25 and below 50 will evaluate this, again, everything else is ignored.
-                Velocity.X = -Speed * 20;
+                Velocity.X = -Speed * 5;
             else if (num < 75)                  // anything above 50 and below 75 will evalute this, do you see a pattern?
-                Velocity.Y = Speed * 20;
+                Velocity.Y = Speed * 5;
             else                                // anything greater than 75 isn't handled before, so we can easily state that any value not handled (in our non-negative range 0-100) is always "else" (since the only unhandeled values are 75+)
-                Velocity.Y = -Speed * 20;
+                Velocity.Y = -Speed * 5;
         }
 
         
         public override void Load(ContentManager Content, string imageFile)
         {
-            num = rnd.Next(100);
             base.Load(Content, imageFile); 
         }
 
@@ -58,14 +69,12 @@ namespace WeakSven
 		{
             if (((int)gameTime.TotalGameTime.TotalSeconds) % 3 == 0)  // every 3 seconds
                 RandDir(gameTime);                                    // run our RanDir function to grab a value and assign a velocity.
+                //if (Player.Instance.Position != Enemy.Instance.Position) For Test Purposes ONLY!           
             else
             {
                 Velocity = Vector2.Zero;
                 ranCheck = false;                // set the check back to false if it is not the 3rd second so the next time the RanDir function is called, it will grab a new random and assign it to num.
-            }
-            
-
-            
+            }          
 			base.Update(gameTime);
 		}
 
