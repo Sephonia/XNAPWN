@@ -100,7 +100,7 @@ namespace WeakSven
             builder.LoadTextures(Content);
             level1.LoadTextures(Content);
 
-            level1.Load(6);
+            level1.Load(3);
             button.onClick += button_onClick;
         }
 
