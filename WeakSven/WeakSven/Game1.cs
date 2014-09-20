@@ -123,8 +123,8 @@ namespace WeakSven
                 this.Exit();
 
             playButton.Update(gameTime);
-            level1.Update(monster, gameTime);
-            monster.Update(gameTime);
+            
+            
 
             whirl.X = (Player.Instance.rect.X - 32);
             whirl.Y = (Player.Instance.rect.Y - 32);
@@ -134,7 +134,7 @@ namespace WeakSven
 
             Player.Instance.Update(gameTime);
 
-            monster.Update(gameTime);
+            
 
             playerHitBox.center.X = (Player.Instance.rect.Width / 2);
             playerHitBox.center.Y = (Player.Instance.rect.Height / 2);
@@ -148,7 +148,8 @@ namespace WeakSven
             if (!playButton.drawn)
             {
                 Combat.Instance.Update(gameTime);
-
+                monster.Update(gameTime);
+                level1.Update(monster, gameTime);
                 if (builderMode)
                     builder.Update(gameTime, previousKeyboard);
 
@@ -174,12 +175,8 @@ namespace WeakSven
             }
 
             if (!playButton.drawn && builderMode == false)
-            {
-                spriteBatch.Draw(levelBG, new Rectangle(0, 0, windowWidth, windowHeight), Color.Black);
-                
-                spriteBatch.Draw(circTex, whirl, Color.White);
-                spriteBatch.Draw(circTex, whirl2, Color.White); 
-                
+            {               
+                spriteBatch.Draw(levelBG, new Rectangle(0, 0, windowWidth, windowHeight), Color.Black);                
                 level1.Draw(spriteBatch);
 
                 spriteBatch.DrawString(font, "Player Hp: " + Player.Instance.Health.ToString(), new Vector2(10, 10), Color.Yellow);
@@ -187,6 +184,8 @@ namespace WeakSven
 
                 monster.Draw(spriteBatch);
                 Player.Instance.Draw(spriteBatch);
+                spriteBatch.Draw(circTex, whirl, Color.White);
+                spriteBatch.Draw(circTex, whirl2, Color.White);
      
             }
 
