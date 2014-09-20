@@ -15,7 +15,6 @@ C:\Users\student\Documents\GitHub\XNAPWN\WeakSven\WeakSven\bin\x86\Debug\Content
 C:\Users\student\Documents\GitHub\XNAPWN\WeakSven\WeakSven\bin\x86\Debug\Content\Audio\SFX\bing.xnb
 C:\Users\student\Documents\GitHub\XNAPWN\WeakSven\WeakSven\bin\x86\Debug\Content\font.xnb
 C:\Users\student\Documents\GitHub\XNAPWN\WeakSven\WeakSven\bin\x86\Debug\Content\BG_Art\bg2.jpg
-C:\Users\student\Documents\GitHub\XNAPWN\WeakSven\WeakSven\bin\x86\Debug\Content\level1.txt
 C:\Users\student\Documents\GitHub\XNAPWN\WeakSven\WeakSven\bin\x86\Debug\XNAGUI.dll
 C:\Users\student\Documents\GitHub\XNAPWN\WeakSven\WeakSven\bin\x86\Debug\XNAGUI.pdb
 C:\Users\student\Documents\GitHub\XNAPWN\WeakSven\WeakSven\obj\x86\Debug\WeakSven.csprojResolveAssemblyReference.cache
@@ -118,3 +117,12 @@ C:\Users\student\Desktop\XNAPWN\WeakSven\WeakSven\bin\x86\Debug\Content\Level\le
 C:\Users\student\Desktop\XNAPWN\WeakSven\WeakSven\bin\x86\Debug\Content\Level\level6.txt
 C:\Users\student\Desktop\XNAPWN\WeakSven\WeakSven\bin\x86\Debug\Content\Level\level7.txt
 C:\Users\student\Desktop\XNAPWN\WeakSven\WeakSven\bin\x86\Debug\Content\Level\level8.txt
+C:\Users\student\Documents\GitHub\XNAPWN\WeakSven\WeakSven\bin\x86\Debug\Content\Level\level1.txt
+C:\Users\student\Documents\GitHub\XNAPWN\WeakSven\WeakSven\bin\x86\Debug\Content\Level\level2.txt
+C:\Users\student\Documents\GitHub\XNAPWN\WeakSven\WeakSven\bin\x86\Debug\Content\Level\level3.txt
+C:\Users\student\Documents\GitHub\XNAPWN\WeakSven\WeakSven\bin\x86\Debug\Content\Level\level4.txt
+C:\Users\student\Documents\GitHub\XNAPWN\WeakSven\WeakSven\bin\x86\Debug\Content\Level\level5.txt
+C:\Users\student\Documents\GitHub\XNAPWN\WeakSven\WeakSven\bin\x86\Debug\Content\Level\level6.txt
+C:\Users\student\Documents\GitHub\XNAPWN\WeakSven\WeakSven\bin\x86\Debug\Content\Level\level7.txt
+C:\Users\student\Documents\GitHub\XNAPWN\WeakSven\WeakSven\bin\x86\Debug\Content\Level\level8.txt
+C:\Users\student\Documents\GitHub\XNAPWN\WeakSven\WeakSven\bin\x86\Debug\Content\Level\level9.txt

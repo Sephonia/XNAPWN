@@ -24,7 +24,7 @@ namespace WeakSven
         }
 
 
-        public Player() : base() { Speed = 0.75f; }
+        private Player() : base() { Speed = 0.75f; }
         #endregion
 
         //public AudioSFX bing = new AudioSFX();
@@ -59,9 +59,12 @@ namespace WeakSven
         //    }
         //}
 
+        
+
         public override void Load(ContentManager Content, string imageFile)
         {
             base.Load(Content, imageFile);
+
 
             //bing.Sound = Content.Load<SoundEffect>("Audio/SFX/bing");
         }
@@ -96,6 +99,8 @@ namespace WeakSven
             }
             else
                 Velocity = Vector2.Zero;
+
+            base.Update(gameTime);
         }
     }
 

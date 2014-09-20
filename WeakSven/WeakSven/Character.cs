@@ -15,11 +15,10 @@ namespace WeakSven
 
         protected Vector2 previousPos = Vector2.Zero;
 
-		public Vector2 Position { get; set; }
+        public Vector2 Position { get; set; }
 		public Vector2 Velocity = Vector2.Zero;
 		public float Speed { get; protected set; }
 
-        
         public Character() : base() { Speed = 0.75f; }
         public Character(string name) : base(name) { Speed = 0.75f; }
 
