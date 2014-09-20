@@ -7,7 +7,19 @@ namespace WeakSven
 {
 	class Enemy : InteractiveCharacter
 	{
+        //For Test Purposes ONLY!
+       /* private static Enemy instance = null;
+        public static Enemy Instance
+        {
+            get
+            {
+                if (instance == null)
+                    instance = new Enemy();
 
+                return instance;
+            }
+        }*/
+        //For Test Purposes ONLY!
         Random rnd = new Random();
         private int randDir;
         int num;
@@ -26,7 +38,7 @@ namespace WeakSven
 
         public Enemy()
             : base() {
-                Speed = 0.05f;
+                CharSpeed = new Vector2(X_SPEED, Y_SPEED);
         }
 
         public void RandDir(GameTime gameTime)
@@ -34,16 +46,16 @@ namespace WeakSven
             num = rnd.Next(100);
                 //Right
                 if (num < 25)
-                    Velocity.X = Speed;
+                    Velocity.X = CharSpeed.X;
                 //Left
                 if (num >= 25 && num < 50)
-                    Velocity.X = -Speed;
+                    Velocity.X = -CharSpeed.X;
                 //Down
                 if (num >= 50 && num < 75)
-                    Velocity.Y = Speed;
+                    Velocity.Y = CharSpeed.Y;
                 //Up
                 if (num >= 75)
-                    Velocity.X = -Speed;
+                    Velocity.X = -CharSpeed.Y;
         }
 
         
@@ -56,7 +68,9 @@ namespace WeakSven
 		public override void Update(GameTime gameTime)
 		{
             if (((int)gameTime.TotalGameTime.TotalSeconds) % 3 == 0)
-                RandDir(gameTime);
+
+                //if (Player.Instance.Position != Enemy.Instance.Position) For Test Purposes ONLY!
+            RandDir(gameTime);
             else
                 Velocity = Vector2.Zero;
             // TODO:  AI here 

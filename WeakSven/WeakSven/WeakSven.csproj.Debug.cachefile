@@ -1,13 +1,8 @@
-<<<<<<< HEAD
-Content\Enemy\Monster.xnb
-Content\Test\circle.xnb
-=======
 Content\Characters\Player.xnb
 Content\Enemy\Monster.xnb
 Content\Test\circle.xnb
 Content\Characters\Block.xnb
 Content\Characters\Grass.xnb
->>>>>>> 97142af37102a392407ffc5bfd1b944699266cbe
 Content\Graphics\brick.xnb
 Content\Graphics\door.xnb
 Content\Graphics\earth.xnb
@@ -43,6 +38,7 @@ Content\Home\home6.xnb
 Content\Home\home7.xnb
 Content\Home\home8.xnb
 Content\Home\home9.xnb
+Content\Enemy\pepper.xnb
 Content\Graphics\rock.xnb
 Content\Graphics\roof.xnb
 Content\Graphics\swamp.xnb
@@ -50,25 +46,13 @@ Content\Graphics\water.xnb
 Content\Graphics\window.xnb
 Content\Audio\SFX\bing.xnb
 Content\font.xnb
-<<<<<<< HEAD
-Content\Characters\Player.xnb
-Content\Characters\Block.xnb
-Content\Characters\Grass.xnb
-Content\Enemy\pepper.xnb
-Content\BG_Art\bg2.jpg
-Content\Level\level1.txt
-=======
 Content\BG_Art\bg2.jpg
 Content\Level\level1.txt
 Content\Level\level2.txt
->>>>>>> 97142af37102a392407ffc5bfd1b944699266cbe
 Content\Level\level3.txt
 Content\Level\level4.txt
 Content\Level\level5.txt
 Content\Level\level6.txt
 Content\Level\level7.txt
 Content\Level\level8.txt
-<<<<<<< HEAD
-=======
 Content\Level\level9.txt
->>>>>>> 97142af37102a392407ffc5bfd1b944699266cbe
