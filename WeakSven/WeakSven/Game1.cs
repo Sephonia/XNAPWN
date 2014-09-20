@@ -1,3 +1,4 @@
+using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -28,7 +29,6 @@ namespace WeakSven
 
         KeyboardState previousKeyboard;
 
-        Rectangle bg;
         Texture2D bgPic;
 
         Texture2D levelBG;
@@ -37,19 +37,26 @@ namespace WeakSven
         public int bgSpeed = 5;
         public Vector2 velo = Vector2.Zero; //for the background
 
+<<<<<<< HEAD
         //Rectangle slideBar = new Rectangle(0, 50, 50, 300);
         //Texture2D statSheet;
         bool isSliding = false;
         float sideSpeed = 2.0f;
+=======
+        Rectangle slideBar = new Rectangle(0, 50, 50, 300);      
+>>>>>>> 97142af37102a392407ffc5bfd1b944699266cbe
 
         int windowWidth;
         int windowHeight;
 
         Texture2D titleBox;
         Button playButton;
+<<<<<<< HEAD
         Text text;
        
         Rectangle playName;
+=======
+>>>>>>> 97142af37102a392407ffc5bfd1b944699266cbe
 
 
         SpriteFont font;
@@ -63,9 +70,6 @@ namespace WeakSven
             // if you don't want full screen play with these values.
             graphics.PreferredBackBufferHeight = 1200;
             graphics.PreferredBackBufferWidth = 1200;
-
-            //graphics.PreferredBackBufferHeight = 600;
-            //graphics.PreferredBackBufferWidth = 800;
         }
 
         protected override void Initialize()
@@ -73,10 +77,7 @@ namespace WeakSven
             base.Initialize();
 
             //level has started
-            Combat.Instance.AddCombatant(monster);
-
-
-            // Comment the following if you don't want to see the mouse
+            Combat.Instance.AddCombatant(monster);            
             IsMouseVisible = true;
 
             windowWidth = Window.ClientBounds.Width;
@@ -98,28 +99,32 @@ namespace WeakSven
 
             playButton = new Button(font, titleBox, new Rectangle(170, 970, 300, 125));
             playButton.Label = "PLAY";
-
-          //  text = new Text(font, titleBox);
-          //  text.Label = "FINAL HOTSAUCE QUEST-RIM";
-
             playButton.clicked += playButton_clicked;
 
             font = Content.Load<SpriteFont>("font");
 
             Player.Instance.Load(Content, "Characters/Player");
             Player.Instance.Position = new Vector2(100, 100);
+<<<<<<< HEAD
             monster.Load(Content, "Enemy/pepper");
+=======
+
+            monster.Load(Content, "Enemy/Monster");
+>>>>>>> 97142af37102a392407ffc5bfd1b944699266cbe
 
             bgPic = Content.Load<Texture2D>("BG_Art/bg4");
             levelBG = Content.Load<Texture2D>("BG_Art/bg3");
 
             builder.LoadTextures(Content);
+<<<<<<< HEAD
 
             //statSheet = Content.Load<Texture2D>("BG_Art/stat");
 
+=======
+>>>>>>> 97142af37102a392407ffc5bfd1b944699266cbe
             level1.LoadTextures(Content);
-            level1.Load(6);
 
+            level1.Load(6);
             button.onClick += button_onClick;
         }
 
@@ -146,11 +151,16 @@ namespace WeakSven
                 this.Exit();
 
             playButton.Update(gameTime);
+<<<<<<< HEAD
             //text.Update(gameTime);
 
             bg.X = bgPic.Width;
             bg.Y = bgPic.Height;
 
+=======
+            
+            
+>>>>>>> 97142af37102a392407ffc5bfd1b944699266cbe
 
             whirl.X = (Player.Instance.rect.X - 32);
             whirl.Y = (Player.Instance.rect.Y - 32);
@@ -159,8 +169,6 @@ namespace WeakSven
             whirl2.Y = (monster.rect.Y - 32);
 
             Player.Instance.Update(gameTime);
-            bg.X = levelBG.Width;
-            bg.Y = levelBG.Height;
 
             
 
@@ -179,17 +187,16 @@ namespace WeakSven
                 Player.Instance.Update(gameTime);
                 Combat.Instance.Update(gameTime);
                 monster.Update(gameTime);
+<<<<<<< HEAD
+=======
+                level1.Update(monster, gameTime);
+>>>>>>> 97142af37102a392407ffc5bfd1b944699266cbe
                 if (builderMode)
                     builder.Update(gameTime, previousKeyboard);
 
                 previousKeyboard = Keyboard.GetState();
 
-                if (Keyboard.GetState().IsKeyDown(Keys.P) ||
-                    (Keyboard.GetState().IsKeyUp(Keys.P)))
-                {
-                    isSliding = true;
-                    sideSpeed++;
-                }
+                
             }
 
             
@@ -208,33 +215,42 @@ namespace WeakSven
             {
                 spriteBatch.Draw(bgPic, new Rectangle(0, 0, windowWidth, windowHeight), Color.White);
                 playButton.Draw(spriteBatch);
-               // text.Draw(spriteBatch);
             }
 
             if (!playButton.drawn && builderMode == false)
-            {
+
+            {               
                 spriteBatch.Draw(levelBG, new Rectangle(0, 0, windowWidth, windowHeight), Color.Black);
                 level1.Draw(spriteBatch);
+<<<<<<< HEAD
                 
                 spriteBatch.Draw(circTex, whirl, Color.White);
                 spriteBatch.Draw(circTex, whirl2, Color.White); 
                 
                 
+=======
+>>>>>>> 97142af37102a392407ffc5bfd1b944699266cbe
 
                 spriteBatch.DrawString(font, "Player Hp: " + Player.Instance.Health.ToString(), new Vector2(10, 10), Color.Yellow);
                 spriteBatch.DrawString(font, "Monster HP: " + monster.Health.ToString(), new Vector2(640, 10), Color.Yellow);
 
                 monster.Draw(spriteBatch);
                 Player.Instance.Draw(spriteBatch);
+                spriteBatch.Draw(circTex, whirl, Color.White);
+                spriteBatch.Draw(circTex, whirl2, Color.White);
      
             }
 
             if (builderMode == true)
                 builder.Draw(spriteBatch);
 
+<<<<<<< HEAD
            // if (Keyboard.GetState().IsKeyDown(Keys.P))
            //     spriteBatch.Draw(statSheet, slideBar, Color.White);
 
+=======
+            
+>>>>>>> 97142af37102a392407ffc5bfd1b944699266cbe
             spriteBatch.End();
             base.Draw(gameTime);
         }
