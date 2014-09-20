@@ -27,10 +27,8 @@ namespace WeakSven
         public Player() : base() { Speed = 0.75f; }
         #endregion
 
-        public Vector2 place = Vector2.Zero; // name box hovering
-
         //public AudioSFX bing = new AudioSFX();
-
+       
         public void SetName(string name) { Name = name; }
 
         protected int health = 100;
@@ -45,6 +43,21 @@ namespace WeakSven
             }
         }
 
+        //private Vector2 Position = new Vector2();
+        //private Vector2 Place = Vector2.Zero;
+        //public float place
+        //{
+        //    get;
+        //    set
+        //    {
+
+        //        Position.Y = 50.0f;
+
+        //        Place = value;
+        //        if (Place == Position.X)
+        //            Position.X = 100.0f;
+        //    }
+        //}
 
         public override void Load(ContentManager Content, string imageFile)
         {
@@ -59,6 +72,7 @@ namespace WeakSven
             //	bing.Play(gameTime);
 
             // TODO:  Change player controls to fit your game
+           
 
             if (Keyboard.GetState().IsKeyDown(Keys.W) ||
                 Keyboard.GetState().IsKeyDown(Keys.Up))

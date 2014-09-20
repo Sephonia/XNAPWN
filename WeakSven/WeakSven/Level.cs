@@ -25,8 +25,55 @@ namespace WeakSven
 
         public void LoadTextures(ContentManager Content)
         {
+            Textures.Add('a', Content.Load<Texture2D>("Graphics/glass"));
             Textures.Add('b', Content.Load<Texture2D>("Characters/Block"));
+            Textures.Add('c', Content.Load<Texture2D>("Graphics/brick"));
+            Textures.Add('d', Content.Load<Texture2D>("Graphics/door"));
+            Textures.Add('e', Content.Load<Texture2D>("Graphics/earth"));
+            Textures.Add('f', Content.Load<Texture2D>("Graphics/roof"));
             Textures.Add('g', Content.Load<Texture2D>("Characters/Grass"));
+            Textures.Add('h', Content.Load<Texture2D>("Graphics/leaves"));
+            Textures.Add('i', Content.Load<Texture2D>("Graphics/metalH"));
+            Textures.Add('j', Content.Load<Texture2D>("Graphics/metalV"));
+
+
+            Textures.Add('l', Content.Load<Texture2D>("Graphics/lava"));
+            Textures.Add('m', Content.Load<Texture2D>("Graphics/swamp"));
+            Textures.Add('n', Content.Load<Texture2D>("Graphics/stone"));
+            Textures.Add('o', Content.Load<Texture2D>("Graphics/window"));
+            Textures.Add('p', Content.Load<Texture2D>("Graphics/torch"));
+
+            Textures.Add('r', Content.Load<Texture2D>("Graphics/rock"));
+
+            Textures.Add('u', Content.Load<Texture2D>("Graphics/woodH"));
+            Textures.Add('v', Content.Load<Texture2D>("Graphics/woodV"));
+            Textures.Add('w', Content.Load<Texture2D>("Graphics/water"));
+            Textures.Add('y', Content.Load<Texture2D>("Graphics/riverB"));
+            Textures.Add('z', Content.Load<Texture2D>("Graphics/riverT"));
+
+
+            //for the buildings use the numlock to create the parts of the the house
+
+
+            Textures.Add('/', Content.Load<Texture2D>("Home/castle1"));
+            Textures.Add('*', Content.Load<Texture2D>("Home/castle2"));
+            Textures.Add('-', Content.Load<Texture2D>("Home/castle3"));
+            Textures.Add('+', Content.Load<Texture2D>("Home/castle4"));
+            Textures.Add('.', Content.Load<Texture2D>("Home/castle5"));
+            Textures.Add('=', Content.Load<Texture2D>("Home/castle6"));
+            Textures.Add('_', Content.Load<Texture2D>("Home/castle7"));
+            Textures.Add(';', Content.Load<Texture2D>("Home/caslte8"));
+            Textures.Add('`', Content.Load<Texture2D>("Home/castle9"));
+
+            Textures.Add('1', Content.Load<Texture2D>("Home/home1"));
+            Textures.Add('2', Content.Load<Texture2D>("Home/home2"));
+            Textures.Add('3', Content.Load<Texture2D>("Home/home3"));
+            Textures.Add('4', Content.Load<Texture2D>("Home/home4"));
+            Textures.Add('5', Content.Load<Texture2D>("Home/home5"));
+            Textures.Add('6', Content.Load<Texture2D>("Home/home6"));
+            Textures.Add('7', Content.Load<Texture2D>("Home/home7"));
+            Textures.Add('8', Content.Load<Texture2D>("Home/home8"));
+            Textures.Add('9', Content.Load<Texture2D>("Home/home9"));
         }
 
         private void Unload()
@@ -41,7 +88,7 @@ namespace WeakSven
 
         public string GetLevelFile(int level)
         {
-            return "Content/Level" + level + ".txt";
+            return "Content/Level/Level" + level + ".txt";
         }
 
         public void Load(int level)

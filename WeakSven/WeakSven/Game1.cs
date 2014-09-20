@@ -63,8 +63,8 @@ namespace WeakSven
             graphics.PreferredBackBufferHeight = 1200;
             graphics.PreferredBackBufferWidth = 1200;
 
-            graphics.PreferredBackBufferHeight = 600;
-            graphics.PreferredBackBufferWidth = 800;
+            //graphics.PreferredBackBufferHeight = 600;
+            //graphics.PreferredBackBufferWidth = 800;
         }
 
         protected override void Initialize()
@@ -95,11 +95,11 @@ namespace WeakSven
             titleBox = new Texture2D(GraphicsDevice, 1, 1);
             titleBox.SetData(new Color[] { Color.White });
 
-            playButton = new Button(font, titleBox, new Rectangle(50, 50, 150, 75));
+            playButton = new Button(font, titleBox, new Rectangle(170, 970, 300, 125));
             playButton.Label = "PLAY";
 
-            text = new Text(font, titleBox);
-            text.Label = "FINAL HOTSAUCE QUEST-RIM";
+          //  text = new Text(font, titleBox);
+          //  text.Label = "FINAL HOTSAUCE QUEST-RIM";
 
             playButton.clicked += playButton_clicked;
 
@@ -108,17 +108,15 @@ namespace WeakSven
             Player.Instance.Load(Content, "Characters/Player");
             monster.Load(Content, "Enemy/Monster");
 
-            bgPic = Content.Load<Texture2D>("BG_Art/rest");
+            bgPic = Content.Load<Texture2D>("BG_Art/bg4");
             levelBG = Content.Load<Texture2D>("BG_Art/bg3");
-
-            statSheet = Content.Load<Texture2D>("stat");
 
             builder.LoadTextures(Content);
 
-            statSheet = Content.Load<Texture2D>("stat");
+            statSheet = Content.Load<Texture2D>("BG_Art/stat");
 
             level1.LoadTextures(Content);
-            level1.Load(1);
+            level1.Load(6);
 
             button.onClick += button_onClick;
         }
@@ -146,7 +144,7 @@ namespace WeakSven
                 this.Exit();
 
             playButton.Update(gameTime);
-            text.Update(gameTime);
+            //text.Update(gameTime);
 
             bg.X = bgPic.Width;
             bg.Y = bgPic.Height;
@@ -209,23 +207,24 @@ namespace WeakSven
             {
                 spriteBatch.Draw(bgPic, new Rectangle(0, 0, windowWidth, windowHeight), Color.White);
                 playButton.Draw(spriteBatch);
-                text.Draw(spriteBatch);
+               // text.Draw(spriteBatch);
             }
 
             if (!playButton.drawn && builderMode == false)
             {
+                spriteBatch.Draw(levelBG, new Rectangle(0, 0, windowWidth, windowHeight), Color.Black);
+                
                 spriteBatch.Draw(circTex, whirl, Color.White);
-                spriteBatch.Draw(circTex, whirl2, Color.White);
-
-                spriteBatch.Draw(levelBG, new Rectangle(0, 0, windowWidth, windowHeight), Color.White);
+                spriteBatch.Draw(circTex, whirl2, Color.White); 
                 
                 level1.Draw(spriteBatch);
 
                 spriteBatch.DrawString(font, "Player Hp: " + Player.Instance.Health.ToString(), new Vector2(10, 10), Color.Yellow);
                 spriteBatch.DrawString(font, "Monster HP: " + monster.Health.ToString(), new Vector2(640, 10), Color.Yellow);
-                monster.Draw(spriteBatch);
 
+                monster.Draw(spriteBatch);
                 Player.Instance.Draw(spriteBatch);
+     
             }
 
             if (builderMode == true)

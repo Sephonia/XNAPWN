@@ -37,18 +37,145 @@ namespace WeakSven
 
         public void LoadTextures(ContentManager Content)
         {
+            Textures.Add('a', Content.Load<Texture2D>("Graphics/glass"));
             Textures.Add('b', Content.Load<Texture2D>("Characters/Block"));
+            Textures.Add('c', Content.Load<Texture2D>("Graphics/brick"));
+            Textures.Add('d', Content.Load<Texture2D>("Graphics/door"));
+            Textures.Add('e', Content.Load<Texture2D>("Graphics/earth"));
+            Textures.Add('f', Content.Load<Texture2D>("Graphics/roof"));
             Textures.Add('g', Content.Load<Texture2D>("Characters/Grass"));
+            Textures.Add('h', Content.Load<Texture2D>("Graphics/leaves"));
+            Textures.Add('i', Content.Load<Texture2D>("Graphics/metalH"));
+            Textures.Add('j', Content.Load<Texture2D>("Graphics/metalV"));
+            
+            
+            Textures.Add('l', Content.Load<Texture2D>("Graphics/lava"));
+            Textures.Add('m', Content.Load<Texture2D>("Graphics/swamp"));
+            Textures.Add('n', Content.Load<Texture2D>("Graphics/stone"));
+            Textures.Add('o', Content.Load<Texture2D>("Graphics/window"));
+            Textures.Add('p', Content.Load<Texture2D>("Graphics/torch"));
+
+            Textures.Add('r', Content.Load<Texture2D>("Graphics/rock"));
+
+            Textures.Add('u', Content.Load<Texture2D>("Graphics/woodH"));
+            Textures.Add('v', Content.Load<Texture2D>("Graphics/woodV"));
+            Textures.Add('w', Content.Load<Texture2D>("Graphics/water"));
+            Textures.Add('y', Content.Load<Texture2D>("Graphics/riverB"));
+            Textures.Add('z', Content.Load<Texture2D>("Graphics/riverT"));
+
+
+            //for the buildings use the numlock to create the parts of the the house
+
+
+            Textures.Add('/', Content.Load<Texture2D>("Home/castle1"));
+            Textures.Add('*', Content.Load<Texture2D>("Home/castle2"));
+            Textures.Add('-', Content.Load<Texture2D>("Home/castle3"));
+            Textures.Add('+', Content.Load<Texture2D>("Home/castle4"));
+            Textures.Add('.', Content.Load<Texture2D>("Home/castle5"));
+            Textures.Add('=', Content.Load<Texture2D>("Home/castle6"));
+            Textures.Add('_', Content.Load<Texture2D>("Home/castle7"));
+            Textures.Add(';', Content.Load<Texture2D>("Home/caslte8"));
+            Textures.Add('`', Content.Load<Texture2D>("Home/castle9"));
+            
+            Textures.Add('1', Content.Load<Texture2D>("Home/home1"));
+            Textures.Add('2', Content.Load<Texture2D>("Home/home2"));
+            Textures.Add('3', Content.Load<Texture2D>("Home/home3"));
+            Textures.Add('4', Content.Load<Texture2D>("Home/home4"));
+            Textures.Add('5', Content.Load<Texture2D>("Home/home5"));
+            Textures.Add('6', Content.Load<Texture2D>("Home/home6"));
+            Textures.Add('7', Content.Load<Texture2D>("Home/home7"));
+            Textures.Add('8', Content.Load<Texture2D>("Home/home8"));
+            Textures.Add('9', Content.Load<Texture2D>("Home/home9"));
+
         }
 
         public void Update(GameTime gameTime, KeyboardState previousKeyboard)
         {
-            if (Keyboard.GetState().IsKeyDown(Keys.B))
+            if (Keyboard.GetState().IsKeyDown(Keys.A))
+                texIndex = 'a';
+            else if (Keyboard.GetState().IsKeyDown(Keys.B))
                 texIndex = 'b';
+            else if (Keyboard.GetState().IsKeyDown(Keys.C))
+                texIndex = 'c';
+            else if (Keyboard.GetState().IsKeyDown(Keys.D))
+                texIndex = 'd';
+            else if (Keyboard.GetState().IsKeyDown(Keys.E))
+                texIndex = 'e';
+            else if (Keyboard.GetState().IsKeyDown(Keys.F))
+                texIndex = 'f';
             else if (Keyboard.GetState().IsKeyDown(Keys.G))
                 texIndex = 'g';
+            else if (Keyboard.GetState().IsKeyDown(Keys.H))
+                texIndex = 'h';
+            else if (Keyboard.GetState().IsKeyDown(Keys.I))
+                texIndex = 'i';
+            else if (Keyboard.GetState().IsKeyDown(Keys.J))
+                texIndex = 'j';
+            else if (Keyboard.GetState().IsKeyDown(Keys.L))
+                texIndex = 'l';
+
+            else if (Keyboard.GetState().IsKeyDown(Keys.M))
+                texIndex = 'm';
+            else if (Keyboard.GetState().IsKeyDown(Keys.N))
+                texIndex = 'n';
+            else if (Keyboard.GetState().IsKeyDown(Keys.O))
+                texIndex = 'o';
+            else if (Keyboard.GetState().IsKeyDown(Keys.P))
+                texIndex = 'p';
+            else if (Keyboard.GetState().IsKeyDown(Keys.R))
+                texIndex = 'r';
+            else if (Keyboard.GetState().IsKeyDown(Keys.U))
+                texIndex = 'u';
+            else if (Keyboard.GetState().IsKeyDown(Keys.V))
+                texIndex = 'v';
+            else if (Keyboard.GetState().IsKeyDown(Keys.W))
+                texIndex = 'w';
+            else if (Keyboard.GetState().IsKeyDown(Keys.Y))
+                texIndex = 'y';
+            else if (Keyboard.GetState().IsKeyDown(Keys.Z))
+                texIndex = 'z';
+
+                //for the buildings
+            else if (Keyboard.GetState().IsKeyDown(Keys.NumPad1))
+                texIndex = '1';
+            else if (Keyboard.GetState().IsKeyDown(Keys.NumPad2))
+                texIndex = '2';
+            else if (Keyboard.GetState().IsKeyDown(Keys.NumPad3))
+                texIndex = '3';
+            else if (Keyboard.GetState().IsKeyDown(Keys.NumPad4))
+                texIndex = '4';
+            else if (Keyboard.GetState().IsKeyDown(Keys.NumPad5))
+                texIndex = '5';
+            else if (Keyboard.GetState().IsKeyDown(Keys.NumPad6))
+                texIndex = '6';
+            else if (Keyboard.GetState().IsKeyDown(Keys.NumPad7))
+                texIndex = '7';
+            else if (Keyboard.GetState().IsKeyDown(Keys.NumPad8))
+                texIndex = '8';
+            else if (Keyboard.GetState().IsKeyDown(Keys.NumPad9))
+                texIndex = '9';
+
+            else if (Keyboard.GetState().IsKeyDown(Keys.PrintScreen))
+                texIndex = '/';
+            else if (Keyboard.GetState().IsKeyDown(Keys.Scroll))
+                texIndex = '*';
+            else if (Keyboard.GetState().IsKeyDown(Keys.Pause))
+                texIndex = '-';
+            else if (Keyboard.GetState().IsKeyDown(Keys.Insert))
+                texIndex = '+';
+            else if (Keyboard.GetState().IsKeyDown(Keys.Home))
+                texIndex = '.';
+            else if (Keyboard.GetState().IsKeyDown(Keys.PageUp))
+                texIndex = '=';
+            else if (Keyboard.GetState().IsKeyDown(Keys.Delete))
+                texIndex = '_';
+            else if (Keyboard.GetState().IsKeyDown(Keys.End))
+                texIndex = ';';
+            else if (Keyboard.GetState().IsKeyDown(Keys.PageDown))
+                texIndex = '`';
             else
                 texIndex = '0';
+
 
             gridX = (Mouse.GetState().X / 25) * 25;
             gridY = (Mouse.GetState().Y / 25) * 25;
