@@ -43,21 +43,6 @@ namespace WeakSven
             }
         }
 
-        //private Vector2 Position = new Vector2();
-        //private Vector2 Place = Vector2.Zero;
-        //public float place
-        //{
-        //    get;
-        //    set
-        //    {
-
-        //        Position.Y = 50.0f;
-
-        //        Place = value;
-        //        if (Place == Position.X)
-        //            Position.X = 100.0f;
-        //    }
-        //}
 
         public override void Load(ContentManager Content, string imageFile)
         {
@@ -96,6 +81,8 @@ namespace WeakSven
             }
             else
                 Velocity = Vector2.Zero;
+
+            base.Update(gameTime);
         }
     }
 

@@ -13,7 +13,7 @@ namespace WeakSven
     {
         public List<Tex> Texes { get; private set; }
         public Dictionary<char, Texture2D> Textures { get; private set; }
-        public bool pCollides = false, eCollides = false;
+        public bool pCollides = false, eCollides = false, bCollides = false;
 
         public int CurrentLevel { get; private set; }
 
@@ -98,7 +98,7 @@ namespace WeakSven
 
             CurrentLevel = level;
 
-            Unload();
+            
 
             int y = 0;
             foreach (string line in File.ReadLines(GetLevelFile(level)))
@@ -118,11 +118,19 @@ namespace WeakSven
             foreach (Tex b in Texes)
             {
                 if (Player.Instance.rect.Intersects(b.Rect))
-                    Player.Instance.MoveBack();
+                {
+                    //b.Rect, Player.Instance.Position
+                    // b
+                    //Content/Characters/block
+
+                    if (b.Equals("Characters/block"))
+                        Player.Instance.MoveBack();
+                }
 
                 if (enem.rect.Intersects(b.Rect))
                     enem.Velocity = Vector2.Zero;
             }
+            
         }
 
         public void Draw(SpriteBatch spriteBatch)

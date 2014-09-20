@@ -14,6 +14,7 @@ namespace WeakSven
 
         Level level1 = new Level();
         LevelBuilder builder = new LevelBuilder();
+//        public bool bCollides = false;
 
         private bool builderMode = false;
 
@@ -36,8 +37,8 @@ namespace WeakSven
         public int bgSpeed = 5;
         public Vector2 velo = Vector2.Zero; //for the background
 
-        Rectangle slideBar = new Rectangle(0, 50, 50, 300);
-        Texture2D statSheet;
+        //Rectangle slideBar = new Rectangle(0, 50, 50, 300);
+        //Texture2D statSheet;
         bool isSliding = false;
         float sideSpeed = 2.0f;
 
@@ -47,7 +48,7 @@ namespace WeakSven
         Texture2D titleBox;
         Button playButton;
         Text text;
-        //Hover Hero;
+       
         Rectangle playName;
 
 
@@ -106,14 +107,15 @@ namespace WeakSven
             font = Content.Load<SpriteFont>("font");
 
             Player.Instance.Load(Content, "Characters/Player");
-            monster.Load(Content, "Enemy/Monster");
+            Player.Instance.Position = new Vector2(100, 100);
+            monster.Load(Content, "Enemy/pepper");
 
             bgPic = Content.Load<Texture2D>("BG_Art/bg4");
             levelBG = Content.Load<Texture2D>("BG_Art/bg3");
 
             builder.LoadTextures(Content);
 
-            statSheet = Content.Load<Texture2D>("BG_Art/stat");
+            //statSheet = Content.Load<Texture2D>("BG_Art/stat");
 
             level1.LoadTextures(Content);
             level1.Load(6);
@@ -149,11 +151,6 @@ namespace WeakSven
             bg.X = bgPic.Width;
             bg.Y = bgPic.Height;
 
-            Player.Instance.Update(gameTime);
-
-            level1.Update(monster, gameTime);
-
-            monster.Update(gameTime);
 
             whirl.X = (Player.Instance.rect.X - 32);
             whirl.Y = (Player.Instance.rect.Y - 32);
@@ -165,7 +162,7 @@ namespace WeakSven
             bg.X = levelBG.Width;
             bg.Y = levelBG.Height;
 
-            monster.Update(gameTime);
+            
 
             playerHitBox.center.X = (Player.Instance.rect.Width / 2);
             playerHitBox.center.Y = (Player.Instance.rect.Height / 2);
@@ -178,8 +175,10 @@ namespace WeakSven
 
             if (!playButton.drawn)
             {
+                level1.Update(monster, gameTime);
+                Player.Instance.Update(gameTime);
                 Combat.Instance.Update(gameTime);
-
+                monster.Update(gameTime);
                 if (builderMode)
                     builder.Update(gameTime, previousKeyboard);
 
@@ -192,6 +191,8 @@ namespace WeakSven
                     sideSpeed++;
                 }
             }
+
+            
 
             previousKeyboard = Keyboard.GetState();
 
@@ -213,11 +214,12 @@ namespace WeakSven
             if (!playButton.drawn && builderMode == false)
             {
                 spriteBatch.Draw(levelBG, new Rectangle(0, 0, windowWidth, windowHeight), Color.Black);
+                level1.Draw(spriteBatch);
                 
                 spriteBatch.Draw(circTex, whirl, Color.White);
                 spriteBatch.Draw(circTex, whirl2, Color.White); 
                 
-                level1.Draw(spriteBatch);
+                
 
                 spriteBatch.DrawString(font, "Player Hp: " + Player.Instance.Health.ToString(), new Vector2(10, 10), Color.Yellow);
                 spriteBatch.DrawString(font, "Monster HP: " + monster.Health.ToString(), new Vector2(640, 10), Color.Yellow);
@@ -230,8 +232,8 @@ namespace WeakSven
             if (builderMode == true)
                 builder.Draw(spriteBatch);
 
-            if (Keyboard.GetState().IsKeyDown(Keys.P))
-                spriteBatch.Draw(statSheet, slideBar, Color.White);
+           // if (Keyboard.GetState().IsKeyDown(Keys.P))
+           //     spriteBatch.Draw(statSheet, slideBar, Color.White);
 
             spriteBatch.End();
             base.Draw(gameTime);

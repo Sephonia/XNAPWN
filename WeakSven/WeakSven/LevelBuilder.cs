@@ -26,7 +26,7 @@ namespace WeakSven
 
         List<PaintObject> paintings = new List<PaintObject>();
 
-        char texIndex = '0';
+        public char texIndex = '0';
 
         int gridX = 0, gridY = 0;
 
