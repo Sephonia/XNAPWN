@@ -138,10 +138,6 @@ namespace WeakSven
                 if (enem.rect.Intersects(collideRect))
                     enem.Velocity = Vector2.Zero; 
             }
-
-            //foreach (Tex b in Texes)
-            //    if (Player.Instance.rect.Intersects(b.Rect))
-            //        Player.Instance.MoveBack();
         
         }
 

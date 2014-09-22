@@ -48,4 +48,5 @@ Content\Audio\SFX\bing.xnb
 Content\font.xnb
 Content\BG_Art\bg2.jpg
 Content\Level\Level1.txt
+Content\Level\level2.txt
 Content\Level\level6.txt

@@ -14,6 +14,8 @@ namespace WeakSven
         Button2 button = new Button2(new Rectangle(0, 0, 200, 50));
 
         Level level1 = new Level();
+        Level level2 = new Level();
+
         LevelBuilder builder = new LevelBuilder();
 
         private bool builderMode = false;
@@ -99,8 +101,12 @@ namespace WeakSven
             builder.LoadTextures(Content);
 
             level1.LoadTextures(Content);
+            level2.LoadTextures(Content);
 
-            level1.Load(6);
+
+            level1.Load(2);
+            level2.Load(6);
+
             button.onClick += button_onClick;
         }
 
@@ -164,7 +170,16 @@ namespace WeakSven
             previousKeyboard = Keyboard.GetState();
             #region Binding characters to screen bounds
             if (Player.Instance.rect.X + Player.Instance.rect.Width > windowWidth)
-                Player.Instance.MoveBack();
+            {
+                //TODO: To go to the next level uncomment but the new layer will mimic the old layer in regards to collsion
+               // if(Player.Instance.Position == new Vector2(1275, windowWidth))
+               // {
+               //     level2.Load(6);
+               //     Player.Instance.Position = new Vector2(110, 350);
+               Player.Instance.MoveBack();
+               // }
+            }
+               
             if (Player.Instance.rect.X < 0)
                 Player.Instance.MoveBack();
             if (Player.Instance.rect.Y + Player.Instance.rect.Height > windowHeight)
@@ -199,8 +214,10 @@ namespace WeakSven
 
             {               
                 spriteBatch.Draw(levelBG, new Rectangle(0, 0, windowWidth, windowHeight), Color.Black);
+                
+                
                 level1.Draw(spriteBatch);
-
+               // level2.Draw(spriteBatch);
                 
                 spriteBatch.Draw(circTex, whirl, Color.White);
                 spriteBatch.Draw(circTex, whirl2, Color.White); 
@@ -217,10 +234,6 @@ namespace WeakSven
 
             if (builderMode == true)
                 builder.Draw(spriteBatch);
-
-
-           // if (Keyboard.GetState().IsKeyDown(Keys.P))
-           //     spriteBatch.Draw(statSheet, slideBar, Color.White);
 
             spriteBatch.End();
             base.Draw(gameTime);
