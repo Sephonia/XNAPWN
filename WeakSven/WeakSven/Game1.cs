@@ -8,6 +8,10 @@ namespace WeakSven
 {
     public class Game1 : Microsoft.Xna.Framework.Game
     {
+        public const int BIT_SIZE = 32;
+        //public const int BIT_SIZE = 64;
+
+
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
@@ -53,8 +57,8 @@ namespace WeakSven
             graphics.IsFullScreen = false;
 
             // if you don't want full screen play with these values.
-            graphics.PreferredBackBufferHeight = 1200;
-            graphics.PreferredBackBufferWidth = 1200;
+            graphics.PreferredBackBufferHeight = 1280;
+            graphics.PreferredBackBufferWidth = 1280;
         }
 
         protected override void Initialize()
@@ -135,11 +139,11 @@ namespace WeakSven
             playButton.Update(gameTime);
 
 
-            whirl.X = (Player.Instance.rect.X - 32);
-            whirl.Y = (Player.Instance.rect.Y - 32);
+            whirl.X = (Player.Instance.rect.X - BIT_SIZE);
+            whirl.Y = (Player.Instance.rect.Y - BIT_SIZE);
 
-            whirl2.X = (monster.rect.X - 32);
-            whirl2.Y = (monster.rect.Y - 32);
+            whirl2.X = (monster.rect.X - BIT_SIZE);
+            whirl2.Y = (monster.rect.Y - BIT_SIZE);
 
 
             playerHitBox.center.X = (Player.Instance.rect.Width / 2);
