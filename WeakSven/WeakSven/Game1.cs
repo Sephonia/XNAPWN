@@ -8,6 +8,8 @@ namespace WeakSven
 {
     public class Game1 : Microsoft.Xna.Framework.Game
     {
+
+        #region Variables
         public const int BIT_SIZE = 32;
         //public const int BIT_SIZE = 64;
 
@@ -35,7 +37,6 @@ namespace WeakSven
         KeyboardState previousKeyboard;
 
         Texture2D bgPic;
-
         Texture2D levelBG;     
 
         public int windowWidth;
@@ -45,10 +46,10 @@ namespace WeakSven
         Button playButton;
 
         Text text;
-
         Rectangle playName;
-
         SpriteFont font;
+
+#endregion
 
         public Game1()
         {
@@ -86,7 +87,7 @@ namespace WeakSven
             titleBox = new Texture2D(GraphicsDevice, 1, 1);
             titleBox.SetData(new Color[] { Color.White });
 
-            playButton = new Button(font, titleBox, new Rectangle(170, 970, 300, 125));
+            playButton = new Button(font, titleBox, new Rectangle(170, 1040, 345, 130));
             playButton.Label = "PLAY";
             playButton.clicked += playButton_clicked;
 
@@ -109,7 +110,8 @@ namespace WeakSven
 
 
             level1.Load(2);
-            level2.Load(6);
+            //level2.Load(6);
+            
 
             button.onClick += button_onClick;
         }
@@ -126,7 +128,14 @@ namespace WeakSven
             playButton.clicked -= playButton_clicked;
         }
 
-        protected override void UnloadContent() { }
+        protected override void UnloadContent() 
+        {
+            //if (Player.Instance.Position == new Vector2(1275, windowWidth))
+            //{
+            //    level1.Unload();
+            //    //UnloadContent();
+            //}
+        }
 
         protected override void Update(GameTime gameTime)
         {
@@ -162,6 +171,7 @@ namespace WeakSven
                 monster.Update(gameTime);
 
                 level1.Update(monster, gameTime);
+                level2.Update(monster, gameTime);
 
                 if (builderMode)
                     builder.Update(gameTime, previousKeyboard);
@@ -221,7 +231,7 @@ namespace WeakSven
                 
                 
                 level1.Draw(spriteBatch);
-               // level2.Draw(spriteBatch);
+                level2.Draw(spriteBatch);
                 
                 spriteBatch.Draw(circTex, whirl, Color.White);
                 spriteBatch.Draw(circTex, whirl2, Color.White); 
@@ -244,3 +254,62 @@ namespace WeakSven
         }
     }
 }
+
+//TODO: MATH IDEA
+/////               HERE IS THE THEORY I HAD TOWARD THE LONG RANGE THING.
+//
+//Probabaly none of this would work, iterator looks bad because i wrote this when
+//i was Attribute work.
+//
+//but basically, while the player and the enemy roam around 
+//
+//if the player is standing in one spot for too long and 
+//    is within the range of the enemy's radar. 
+//the radar would turn on (be drawn)
+//and would stay on until the player is out of range.
+//
+//the player is always center of the radar.
+//
+//if the player remains within the radar the eenemy will fire.
+//while the firing is going on the enemy is stationary 
+//the player tries to move out of range
+//
+//while the enemy is shooting 
+//the fireblasts will shoot At the player in random order within the matrix
+//
+//if abstract fireblast is already fired and the player is already out of range 
+//the fireblast will continue its path.
+//
+//the enemy will continue firing if the player is still within the enemy range.
+//
+//
+//let me know if this is too crazy, if was thinking about the math portion that we
+//need to add 
+//we would use magnitude, normalize, matrix, etc.
+//
+//just a thought
+//
+//
+//Texture2D radar;
+//Rectangle radarRect = new Rectangle(0, 0, 96, 96);
+//bool radarOn = false;
+//float stillTime = 5.0f;
+//bool firing = false;
+//bool shotsfired = false;
+//(clas needed)Projectiles  plasmaBlast; or pB for short
+//float Random randBlast;
+//
+//Enemy eLoc = new Vector2(Enemy.Position.X, Enemy.Position.Y);
+//Vector2 playerLoc = new Vector2(Player.Instance.Position.X, Player.Instance.Position.Y);
+//
+//Vector2 NormLongAtk = new Vector2(eloc, playerLoc);
+//Vector3 eRadar = new Vector3((radarRect.X + (32*2)), (radarRect.Y + (32*2)), 
+//                            ((radarRect.x + radarRect.Y) + (32*2)));
+//
+//Vector2 blastMag = new Vector2 (pB.X, pB.Y);
+//
+//Vector2 NormBlast = new Vector2(playerLoc, blastMag);
+//
+//
+//
+/////
