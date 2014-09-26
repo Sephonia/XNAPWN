@@ -95,10 +95,11 @@ namespace WeakSven
 
             Player.Instance.Load(Content, "Characters/Player");
 
-            Player.Instance.Position = new Vector2(110, 350);
+            Player.Instance.Position = new Vector2(50, 300);
 
-            monster.Load(Content, "Enemy/pepper");
+            monster.Load(Content, "Enemy/mooRight");
 
+            monster.Position = new Vector2(400, 110);
 
             bgPic = Content.Load<Texture2D>("BG_Art/bg4");
             levelBG = Content.Load<Texture2D>("BG_Art/bg3");
@@ -109,7 +110,7 @@ namespace WeakSven
             level2.LoadTextures(Content);
 
 
-            level1.Load(2);
+            level1.Load(7);
             //level2.Load(6);
             
 
@@ -236,8 +237,8 @@ namespace WeakSven
                 spriteBatch.Draw(circTex, whirl, Color.White);
                 spriteBatch.Draw(circTex, whirl2, Color.White); 
 
-                spriteBatch.DrawString(font, "Player Hp: " + Player.Instance.Health.ToString(), new Vector2(10, 10), Color.Yellow);
-                spriteBatch.DrawString(font, "Monster HP: " + monster.Health.ToString(), new Vector2(640, 10), Color.Yellow);
+                spriteBatch.DrawString(font, "Player Hp: " + Player.Instance.Health.ToString(), new Vector2(10, 10), Color.Pink);
+                spriteBatch.DrawString(font, "Monster HP: " + monster.Health.ToString(), new Vector2(640, 10), Color.Pink);
 
                 monster.Draw(spriteBatch);
                 Player.Instance.Draw(spriteBatch);

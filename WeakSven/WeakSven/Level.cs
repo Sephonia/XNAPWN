@@ -53,6 +53,8 @@ namespace WeakSven
             collideTexture.Add('f', Content.Load<Texture2D>("Graphics/roof"));
             collideTexture.Add('o', Content.Load<Texture2D>("Graphics/window"));
             collideTexture.Add('w', Content.Load<Texture2D>("Graphics/water"));
+            collideTexture.Add('k', Content.Load<Texture2D>("Graphics/firePit"));
+            collideTexture.Add('q', Content.Load<Texture2D>("Graphics/gPit"));
 
             //slow and damage
             collideTexture.Add('l', Content.Load<Texture2D>("Graphics/lava"));
@@ -80,16 +82,27 @@ namespace WeakSven
 
             //for the buildings use the numlock to create the parts of the the house
 
-            Textures.Add('*', Content.Load<Texture2D>("Home/castle2"));
+            Textures.Add('*', Content.Load<Texture2D>("Home/gh2"));
+                                                                  
+            collideTexture.Add('/', Content.Load<Texture2D>("Home/gh1"));
+            collideTexture.Add('-', Content.Load<Texture2D>("Home/gh3"));
+            collideTexture.Add('+', Content.Load<Texture2D>("Home/gh4"));
+            collideTexture.Add('.', Content.Load<Texture2D>("Home/gh5"));
+            collideTexture.Add('=', Content.Load<Texture2D>("Home/gh6"));
+            collideTexture.Add('_', Content.Load<Texture2D>("Home/gh7"));
+            collideTexture.Add(';', Content.Load<Texture2D>("Home/gh8"));
+            collideTexture.Add('`', Content.Load<Texture2D>("Home/gh9"));
 
-            collideTexture.Add('/', Content.Load<Texture2D>("Home/castle1"));
-            collideTexture.Add('-', Content.Load<Texture2D>("Home/castle3"));
-            collideTexture.Add('+', Content.Load<Texture2D>("Home/castle4"));
-            collideTexture.Add('.', Content.Load<Texture2D>("Home/castle5"));
-            collideTexture.Add('=', Content.Load<Texture2D>("Home/castle6"));
-            collideTexture.Add('_', Content.Load<Texture2D>("Home/castle7"));
-            collideTexture.Add(';', Content.Load<Texture2D>("Home/caslte8"));
-            collideTexture.Add('`', Content.Load<Texture2D>("Home/castle9"));
+            Textures.Add('@', Content.Load<Texture2D>("Home/wh2"));
+
+            collideTexture.Add('!', Content.Load<Texture2D>("Home/wh1"));
+            collideTexture.Add('#', Content.Load<Texture2D>("Home/wh3"));
+            collideTexture.Add('$', Content.Load<Texture2D>("Home/wh4"));
+            collideTexture.Add('%', Content.Load<Texture2D>("Home/wh5"));
+            collideTexture.Add('^', Content.Load<Texture2D>("Home/wh6"));
+            collideTexture.Add('&', Content.Load<Texture2D>("Home/wh7"));
+            collideTexture.Add(':', Content.Load<Texture2D>("Home/wh8"));
+            collideTexture.Add('"', Content.Load<Texture2D>("Home/wh9"));
 
             Textures.Add('2', Content.Load<Texture2D>("Home/home2"));
 

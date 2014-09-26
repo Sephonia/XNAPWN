@@ -47,14 +47,15 @@ namespace WeakSven
             Textures.Add('h', Content.Load<Texture2D>("Graphics/leaves"));
             Textures.Add('i', Content.Load<Texture2D>("Graphics/metalH"));
             Textures.Add('j', Content.Load<Texture2D>("Graphics/metalV"));
-            
-            
+
+
+            Textures.Add('k', Content.Load<Texture2D>("Graphics/firePit"));
             Textures.Add('l', Content.Load<Texture2D>("Graphics/lava"));
             Textures.Add('m', Content.Load<Texture2D>("Graphics/swamp"));
             Textures.Add('n', Content.Load<Texture2D>("Graphics/stone"));
             Textures.Add('o', Content.Load<Texture2D>("Graphics/window"));
             Textures.Add('p', Content.Load<Texture2D>("Graphics/torch"));
-
+            Textures.Add('q', Content.Load<Texture2D>("Graphics/gPit"));
             Textures.Add('r', Content.Load<Texture2D>("Graphics/rock"));
 
             Textures.Add('u', Content.Load<Texture2D>("Graphics/woodH"));
@@ -67,16 +68,26 @@ namespace WeakSven
             //for the buildings use the numlock to create the parts of the the house
 
 
-            Textures.Add('/', Content.Load<Texture2D>("Home/castle1"));
-            Textures.Add('*', Content.Load<Texture2D>("Home/castle2"));
-            Textures.Add('-', Content.Load<Texture2D>("Home/castle3"));
-            Textures.Add('+', Content.Load<Texture2D>("Home/castle4"));
-            Textures.Add('.', Content.Load<Texture2D>("Home/castle5"));
-            Textures.Add('=', Content.Load<Texture2D>("Home/castle6"));
-            Textures.Add('_', Content.Load<Texture2D>("Home/castle7"));
-            Textures.Add(';', Content.Load<Texture2D>("Home/caslte8"));
-            Textures.Add('`', Content.Load<Texture2D>("Home/castle9"));
-            
+            Textures.Add('/', Content.Load<Texture2D>("Home/gh1"));
+            Textures.Add('*', Content.Load<Texture2D>("Home/gh2"));
+            Textures.Add('-', Content.Load<Texture2D>("Home/gh3"));
+            Textures.Add('+', Content.Load<Texture2D>("Home/gh4"));
+            Textures.Add('.', Content.Load<Texture2D>("Home/gh5"));
+            Textures.Add('=', Content.Load<Texture2D>("Home/gh6"));
+            Textures.Add('_', Content.Load<Texture2D>("Home/gh7"));
+            Textures.Add(';', Content.Load<Texture2D>("Home/gh8"));
+            Textures.Add('`', Content.Load<Texture2D>("Home/gh9"));
+
+            Textures.Add('!', Content.Load<Texture2D>("Home/wh1"));
+            Textures.Add('@', Content.Load<Texture2D>("Home/wh2"));
+            Textures.Add('#', Content.Load<Texture2D>("Home/wh3"));
+            Textures.Add('$', Content.Load<Texture2D>("Home/wh4"));
+            Textures.Add('%', Content.Load<Texture2D>("Home/wh5"));
+            Textures.Add('^', Content.Load<Texture2D>("Home/wh6"));
+            Textures.Add('&', Content.Load<Texture2D>("Home/wh7"));
+            Textures.Add(':', Content.Load<Texture2D>("Home/wh8"));
+            Textures.Add('"', Content.Load<Texture2D>("Home/wh9"));
+
             Textures.Add('1', Content.Load<Texture2D>("Home/home1"));
             Textures.Add('2', Content.Load<Texture2D>("Home/home2"));
             Textures.Add('3', Content.Load<Texture2D>("Home/home3"));
@@ -111,9 +122,10 @@ namespace WeakSven
                 texIndex = 'i';
             else if (Keyboard.GetState().IsKeyDown(Keys.J))
                 texIndex = 'j';
+            else if (Keyboard.GetState().IsKeyDown(Keys.K))
+                texIndex = 'k';
             else if (Keyboard.GetState().IsKeyDown(Keys.L))
                 texIndex = 'l';
-
             else if (Keyboard.GetState().IsKeyDown(Keys.M))
                 texIndex = 'm';
             else if (Keyboard.GetState().IsKeyDown(Keys.N))
@@ -122,6 +134,8 @@ namespace WeakSven
                 texIndex = 'o';
             else if (Keyboard.GetState().IsKeyDown(Keys.P))
                 texIndex = 'p';
+            else if (Keyboard.GetState().IsKeyDown(Keys.Q))
+                texIndex = 'q';
             else if (Keyboard.GetState().IsKeyDown(Keys.R))
                 texIndex = 'r';
             else if (Keyboard.GetState().IsKeyDown(Keys.U))
@@ -173,6 +187,25 @@ namespace WeakSven
                 texIndex = ';';
             else if (Keyboard.GetState().IsKeyDown(Keys.PageDown))
                 texIndex = '`';
+
+            else if (Keyboard.GetState().IsKeyDown(Keys.F1))
+                texIndex = '!';
+            else if (Keyboard.GetState().IsKeyDown(Keys.F2))
+                texIndex = '@';
+            else if (Keyboard.GetState().IsKeyDown(Keys.F3))
+                texIndex = '#';
+            else if (Keyboard.GetState().IsKeyDown(Keys.F4))
+                texIndex = '$';
+            else if (Keyboard.GetState().IsKeyDown(Keys.F5))
+                texIndex = '%';
+            else if (Keyboard.GetState().IsKeyDown(Keys.F6))
+                texIndex = '^';
+            else if (Keyboard.GetState().IsKeyDown(Keys.F7))
+                texIndex = '&';
+            else if (Keyboard.GetState().IsKeyDown(Keys.F8))
+                texIndex = ':';
+            else if (Keyboard.GetState().IsKeyDown(Keys.F9))
+                texIndex = '"'; 
             else
                 texIndex = '0';
 
