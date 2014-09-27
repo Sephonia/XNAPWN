@@ -11,7 +11,7 @@ namespace WeakSven
 
         #region Variables
         public const int BIT_SIZE = 32;
-        //public const int BIT_SIZE = 64;
+        public static int BIT_SIZE_PL = 64;
 
 
         GraphicsDeviceManager graphics;
@@ -19,8 +19,7 @@ namespace WeakSven
 
         Button2 button = new Button2(new Rectangle(0, 0, 200, 50));
 
-        Level level1 = new Level();
-        Level level2 = new Level();
+        Level level = new Level();
 
         LevelBuilder builder = new LevelBuilder();
 
@@ -37,10 +36,10 @@ namespace WeakSven
         KeyboardState previousKeyboard;
 
         Texture2D bgPic;
-        Texture2D levelBG;     
+        Texture2D levelBG;
 
-        public int windowWidth;
-        public int windowHeight;
+        public static int windowWidth;
+        public static int windowHeight;
 
         Texture2D titleBox;
         Button playButton;
@@ -49,7 +48,7 @@ namespace WeakSven
         Rectangle playName;
         SpriteFont font;
 
-#endregion
+        #endregion
 
         public Game1()
         {
@@ -67,7 +66,7 @@ namespace WeakSven
             base.Initialize();
 
             //level has started
-            Combat.Instance.AddCombatant(monster);            
+            Combat.Instance.AddCombatant(monster);
             IsMouseVisible = true;
 
             windowWidth = Window.ClientBounds.Width;
@@ -105,14 +104,9 @@ namespace WeakSven
             levelBG = Content.Load<Texture2D>("BG_Art/bg3");
 
             builder.LoadTextures(Content);
+            level.LoadTextures(Content);
 
-            level1.LoadTextures(Content);
-            level2.LoadTextures(Content);
-
-
-            level1.Load(7);
-            //level2.Load(6);
-            
+            level.Load(1);
 
             button.onClick += button_onClick;
         }
@@ -129,14 +123,8 @@ namespace WeakSven
             playButton.clicked -= playButton_clicked;
         }
 
-        protected override void UnloadContent() 
-        {
-            //if (Player.Instance.Position == new Vector2(1275, windowWidth))
-            //{
-            //    level1.Unload();
-            //    //UnloadContent();
-            //}
-        }
+        protected override void UnloadContent()
+        { }
 
         protected override void Update(GameTime gameTime)
         {
@@ -171,15 +159,14 @@ namespace WeakSven
                 Combat.Instance.Update(gameTime);
                 monster.Update(gameTime);
 
-                level1.Update(monster, gameTime);
-                level2.Update(monster, gameTime);
-
+                level.Update(monster, gameTime);
+                
                 if (builderMode)
                     builder.Update(gameTime, previousKeyboard);
 
                 previousKeyboard = Keyboard.GetState();
 
-                
+
             }
 
             previousKeyboard = Keyboard.GetState();
@@ -187,14 +174,14 @@ namespace WeakSven
             if (Player.Instance.rect.X + Player.Instance.rect.Width > windowWidth)
             {
                 //TODO: To go to the next level uncomment but the new layer will mimic the old layer in regards to collsion
-               // if(Player.Instance.Position == new Vector2(1275, windowWidth))
-               // {
-               //     level2.Load(6);
-               //     Player.Instance.Position = new Vector2(110, 350);
-               Player.Instance.MoveBack();
-               // }
+                // if(Player.Instance.Position == new Vector2(1275, windowWidth))
+                // {
+                //     level2.Load(6);
+                //     Player.Instance.Position = new Vector2(110, 350);
+                Player.Instance.MoveBack();
+                // }
             }
-               
+
             if (Player.Instance.rect.X < 0)
                 Player.Instance.MoveBack();
             if (Player.Instance.rect.Y + Player.Instance.rect.Height > windowHeight)
@@ -226,25 +213,22 @@ namespace WeakSven
             }
 
             if (!playButton.drawn && builderMode == false)
-
-            {               
+            {
                 spriteBatch.Draw(levelBG, new Rectangle(0, 0, windowWidth, windowHeight), Color.Black);
-                
-                
-                level1.Draw(spriteBatch);
-                level2.Draw(spriteBatch);
-                
-                spriteBatch.Draw(circTex, whirl, Color.White);
-                spriteBatch.Draw(circTex, whirl2, Color.White); 
 
-                spriteBatch.DrawString(font, "Player Hp: " + Player.Instance.Health.ToString(), new Vector2(10, 10), Color.Pink);
-                spriteBatch.DrawString(font, "Monster HP: " + monster.Health.ToString(), new Vector2(640, 10), Color.Pink);
+                level.Draw(spriteBatch);
+
+                spriteBatch.Draw(circTex, whirl, Color.White);
+                spriteBatch.Draw(circTex, whirl2, Color.White);
+
+                spriteBatch.DrawString(font, "Player Hp: " + Player.Instance.Health.ToString(), new Vector2(10, 10), Color.Black);
+                spriteBatch.DrawString(font, "Monster HP: " + monster.Health.ToString(), new Vector2(640, 10), Color.Black);
 
                 monster.Draw(spriteBatch);
                 Player.Instance.Draw(spriteBatch);
                 spriteBatch.Draw(circTex, whirl, Color.White);
                 spriteBatch.Draw(circTex, whirl2, Color.White);
-     
+
             }
 
             if (builderMode == true)

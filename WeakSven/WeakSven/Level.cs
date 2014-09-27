@@ -22,6 +22,8 @@ namespace WeakSven
         public Dictionary<char, Texture2D> slowTexture { get; private set; }
         public Dictionary<char, Texture2D> slowDamageTexture { get; private set; }
 
+        int telX, telY;
+
 
         protected bool slowedDown = false;
         protected bool sloDamage = false;
@@ -39,6 +41,7 @@ namespace WeakSven
             Texes = new List<Tex>();
             collide = new List<Tex>();
             slown = new List<Tex>();
+            
             Textures = new Dictionary<char, Texture2D>();
             collideTexture = new Dictionary<char, Texture2D>();
             slowTexture = new Dictionary<char, Texture2D>();
@@ -116,19 +119,18 @@ namespace WeakSven
             collideTexture.Add('9', Content.Load<Texture2D>("Home/home9"));
         }
 
-        protected virtual void Unload()
+        protected void Unload()
         {
             Texes.Clear();
             collide.Clear();
             slown.Clear();
-            collideTexture.Clear();
-
-            //CurrentLevel.Unload();
         }
 
         public void Next()
         {
-            Load(CurrentLevel + 1);
+            Unload();
+            CurrentLevel += 1;
+            Load(CurrentLevel);
         }
 
         public string GetLevelFile(int level)
@@ -143,8 +145,6 @@ namespace WeakSven
 
             CurrentLevel = level;
 
-            
-
             int y = 0;
             foreach (string line in File.ReadLines(GetLevelFile(level)))
             {
@@ -152,6 +152,7 @@ namespace WeakSven
                 {
                     if (Textures.ContainsKey(line[i]))
                         Texes.Add(new Tex(Textures[line[i]], i * 64, y));
+
                     else if(collideTexture.ContainsKey(line[i]))
                     {
                         if (collideTexture.ContainsKey(line[i]))
@@ -167,6 +168,8 @@ namespace WeakSven
 
                 y += 64;
             }
+
+
         }
 
         public void Update(Enemy enem, GameTime gameTime)
@@ -203,6 +206,47 @@ namespace WeakSven
             //}
             #endregion
 
+            if (CurrentLevel == 1)
+            {
+                telX = 1280 - Game1.BIT_SIZE_PL;
+                telY = Game1.windowWidth - Game1.BIT_SIZE_PL;
+            }
+            else if (CurrentLevel == 2)
+            {
+                telX = 1280 - Game1.BIT_SIZE_PL;
+                telY = 1024;
+            }
+            else if (CurrentLevel == 3)
+            {
+                telX = 1280 - Game1.BIT_SIZE_PL;
+                telY = 384;
+            }
+            else if (CurrentLevel == 4)
+            {
+                telX = 1280 - Game1.BIT_SIZE_PL;
+                telY = 128;
+            }
+            else if (CurrentLevel == 5)
+            {
+                telX = 1280 - Game1.BIT_SIZE_PL;
+                telY = 960;
+            }
+            else if (CurrentLevel == 6)
+            {
+                telX = 1280 - Game1.BIT_SIZE_PL;
+                telY = 448;
+            }
+            else if (CurrentLevel == 7)
+            {
+                telX = 1280 - Game1.BIT_SIZE_PL;
+                telY = Game1.windowWidth - Game1.BIT_SIZE_PL;
+            }
+
+            if (Player.Instance.Position == new Vector2(telX, telY))
+            {
+                Next();
+                Player.Instance.Position = new Vector2(50, 300);
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch)
