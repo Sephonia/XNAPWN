@@ -22,7 +22,8 @@ namespace WeakSven
         public Dictionary<char, Texture2D> slowTexture { get; private set; }
         public Dictionary<char, Texture2D> slowDamageTexture { get; private set; }
 
-        int telX, telY;
+        int telXN, telYN, telXB, telYB;
+        Vector2 prev = Vector2.Zero;
 
 
         protected bool slowedDown = false;
@@ -41,7 +42,7 @@ namespace WeakSven
             Texes = new List<Tex>();
             collide = new List<Tex>();
             slown = new List<Tex>();
-            
+
             Textures = new Dictionary<char, Texture2D>();
             collideTexture = new Dictionary<char, Texture2D>();
             slowTexture = new Dictionary<char, Texture2D>();
@@ -80,13 +81,16 @@ namespace WeakSven
             Textures.Add('r', Content.Load<Texture2D>("Graphics/rock"));
             Textures.Add('u', Content.Load<Texture2D>("Graphics/woodH"));
             Textures.Add('v', Content.Load<Texture2D>("Graphics/woodV"));
+            Textures.Add('t', Content.Load<Texture2D>("Graphics/arrow"));
+            Textures.Add('~', Content.Load<Texture2D>("Graphics/arrow2"));
+
 
 
 
             //for the buildings use the numlock to create the parts of the the house
 
             Textures.Add('*', Content.Load<Texture2D>("Home/gh2"));
-                                                                  
+
             collideTexture.Add('/', Content.Load<Texture2D>("Home/gh1"));
             collideTexture.Add('-', Content.Load<Texture2D>("Home/gh3"));
             collideTexture.Add('+', Content.Load<Texture2D>("Home/gh4"));
@@ -133,6 +137,13 @@ namespace WeakSven
             Load(CurrentLevel);
         }
 
+        public void Previous()
+        {
+            Unload();
+            CurrentLevel -= 1;
+            Load(CurrentLevel);
+        }
+
         public string GetLevelFile(int level)
         {
             return "Content/Level/Level" + level + ".txt";
@@ -153,11 +164,11 @@ namespace WeakSven
                     if (Textures.ContainsKey(line[i]))
                         Texes.Add(new Tex(Textures[line[i]], i * 64, y));
 
-                    else if(collideTexture.ContainsKey(line[i]))
+                    else if (collideTexture.ContainsKey(line[i]))
                     {
                         if (collideTexture.ContainsKey(line[i]))
                             collide.Add(new Tex(collideTexture[line[i]], i * 64, y));
-                        
+
                         else if (slowTexture.ContainsKey(line[i]))
                         {
                             if (slowTexture.ContainsKey(line[i]))
@@ -181,7 +192,7 @@ namespace WeakSven
 
 
                 if (enem.rect.Intersects(collideRect))
-                    enem.Velocity = Vector2.Zero; 
+                    enem.Velocity = Vector2.Zero;
             }
             foreach (Tex slo in slown)
             {
@@ -206,47 +217,89 @@ namespace WeakSven
             //}
             #endregion
 
+            #region Teleport
             if (CurrentLevel == 1)
             {
-                telX = 1280 - Game1.BIT_SIZE_PL;
-                telY = Game1.windowWidth - Game1.BIT_SIZE_PL;
+                telXN = 1280 - Game1.BIT_SIZE_PL;
+                telYN = Game1.windowWidth - Game1.BIT_SIZE_PL;
             }
             else if (CurrentLevel == 2)
             {
-                telX = 1280 - Game1.BIT_SIZE_PL;
-                telY = 1024;
+                prev = new Vector2(1280 - Game1.BIT_SIZE_PL, Game1.windowWidth - Game1.BIT_SIZE_PL);
+
+                telXN = 1280 - Game1.BIT_SIZE_PL;
+                telYN = 1024;
+
+                telXB = 0;
+                telYB = 6 * 64;
             }
             else if (CurrentLevel == 3)
             {
-                telX = 1280 - Game1.BIT_SIZE_PL;
-                telY = 384;
+                prev = new Vector2(1280 - Game1.BIT_SIZE_PL, 1024);
+
+                telXN = 1280 - Game1.BIT_SIZE_PL;
+                telYN = 384;
+
+                telXB = 0;
+                telYB = 7 * 64;
             }
             else if (CurrentLevel == 4)
             {
-                telX = 1280 - Game1.BIT_SIZE_PL;
-                telY = 128;
+                prev = new Vector2(1280 - Game1.BIT_SIZE_PL, 384);
+
+                telXN = 1280 - Game1.BIT_SIZE_PL;
+                telYN = 128;
+
+                telXB = 0;
+                telYB = 640;
             }
             else if (CurrentLevel == 5)
             {
-                telX = 1280 - Game1.BIT_SIZE_PL;
-                telY = 960;
+                prev = new Vector2(1280 - Game1.BIT_SIZE_PL, 128);
+
+                telXN = 1280 - Game1.BIT_SIZE_PL;
+                telYN = 960;
+
+                telXB = 0;
+                telYB = 16 * 64;
             }
             else if (CurrentLevel == 6)
             {
-                telX = 1280 - Game1.BIT_SIZE_PL;
-                telY = 448;
+                prev = new Vector2(1280 - Game1.BIT_SIZE_PL, 960);
+
+                telXN = 1280 - Game1.BIT_SIZE_PL;
+                telYN = 448;
+
+                telXB = 0;
+                telYB = 4 * 64;
             }
             else if (CurrentLevel == 7)
             {
-                telX = 1280 - Game1.BIT_SIZE_PL;
-                telY = Game1.windowWidth - Game1.BIT_SIZE_PL;
+                prev = new Vector2(1280 - Game1.BIT_SIZE_PL, 448);
+
+                telXN = 1280 - Game1.BIT_SIZE_PL;
+                telYN = Game1.windowWidth - Game1.BIT_SIZE_PL;
+
+                telXB = 0;
+                telYB = 640;
             }
 
-            if (Player.Instance.Position == new Vector2(telX, telY))
+            if (Player.Instance.Position == new Vector2(telXN, telYN))
             {
                 Next();
                 Player.Instance.Position = new Vector2(50, 300);
             }
+            if(Player.Instance.Position == new Vector2(telXB, telYB))
+            {
+                if (CurrentLevel != 1)
+                {
+                    Previous();
+                    Player.Instance.Position = new Vector2(prev.X - 64, prev.Y - 64);
+                }
+            }
+            #endregion
+
+
         }
 
         public void Draw(SpriteBatch spriteBatch)

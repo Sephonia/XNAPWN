@@ -35,8 +35,6 @@ Content\Graphics\roof.xnb
 Content\Graphics\swamp.xnb
 Content\Graphics\water.xnb
 Content\Graphics\window.xnb
-Content\Audio\SFX\bing.xnb
-Content\font.xnb
 Content\Home\gh1.xnb
 Content\Home\gh2.xnb
 Content\Home\gh3.xnb
@@ -61,10 +59,15 @@ Content\Enemy\mooBack.xnb
 Content\Enemy\mooFront.xnb
 Content\Enemy\mooLeft.xnb
 Content\Enemy\mooRight.xnb
+Content\Home\gPit.xnb
 Content\Enemy\pepBack.xnb
 Content\Enemy\pepFront.xnb
 Content\Enemy\pepLeft.xnb
 Content\Enemy\pepRight.xnb
+Content\Audio\SFX\bing.xnb
+Content\font.xnb
+Content\Graphics\arrow.xnb
+Content\Graphics\arrow2.xnb
 Content\BG_Art\bg2.jpg
 Content\Level\Level1.txt
 Content\Level\level2.txt
