@@ -42,7 +42,7 @@ namespace WeakSven
                     health = 0;
             }
         }
-
+        
         public KeyboardState lastKey;
         private bool movingX = false;
         private bool movingY = false;

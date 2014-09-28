@@ -4,8 +4,10 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Media;
 
 namespace WeakSven
 {
@@ -16,6 +18,8 @@ namespace WeakSven
         public List<Tex> collide { get; private set; }
         public List<Tex> slown { get; private set; }
         public List<Tex> slowAndDamage { get; private set; }
+
+        public List<BGMSFX> Bgms { get; private set; }
 
         public Dictionary<char, Texture2D> Textures { get; private set; }
         public Dictionary<char, Texture2D> collideTexture { get; private set; }
@@ -36,7 +40,7 @@ namespace WeakSven
         #endregion
 
         public int CurrentLevel { get; private set; }
-
+        public int currentMusic { get; private set; }
         public Level()
         {
             Texes = new List<Tex>();
@@ -47,6 +51,7 @@ namespace WeakSven
             collideTexture = new Dictionary<char, Texture2D>();
             slowTexture = new Dictionary<char, Texture2D>();
 
+            Bgms = new List<BGMSFX>();
         }
 
         public void LoadTextures(ContentManager Content)
@@ -121,6 +126,7 @@ namespace WeakSven
             collideTexture.Add('7', Content.Load<Texture2D>("Home/home7"));
             collideTexture.Add('8', Content.Load<Texture2D>("Home/home8"));
             collideTexture.Add('9', Content.Load<Texture2D>("Home/home9"));
+
         }
 
         protected void Unload()
@@ -135,6 +141,8 @@ namespace WeakSven
             Unload();
             CurrentLevel += 1;
             Load(CurrentLevel);
+            
+
         }
 
         public void Previous()
@@ -143,6 +151,7 @@ namespace WeakSven
             CurrentLevel -= 1;
             Load(CurrentLevel);
         }
+
 
         public string GetLevelFile(int level)
         {
@@ -183,13 +192,27 @@ namespace WeakSven
 
         }
 
+
+        public void ListMusic(ContentManager Content)
+        {
+            Bgms.Add(new BGMSFX() { Song = Content.Load<Song>("Audio/BGM/bgm1") });
+            Bgms.Add(new BGMSFX() { Song = Content.Load<Song>("Audio/BGM/bgm2") });
+            Bgms.Add(new BGMSFX() { Song = Content.Load<Song>("Audio/BGM/bgm3") });
+            Bgms.Add(new BGMSFX() { Song = Content.Load<Song>("Audio/BGM/bgm4") });
+            Bgms.Add(new BGMSFX() { Song = Content.Load<Song>("Audio/BGM/bgm5") });
+            Bgms.Add(new BGMSFX() { Song = Content.Load<Song>("Audio/BGM/bgm6") });
+            Bgms.Add(new BGMSFX() { Song = Content.Load<Song>("Audio/BGM/bgm7") });
+        }
+
+
+
         public void Update(Enemy enem, GameTime gameTime)
         {
+            currentMusic = (CurrentLevel - 1);
             foreach (Tex co in collide)
             {
                 if (Player.Instance.rect.Intersects(co.Rect))
                     Player.Instance.MoveBack();
-
 
                 if (enem.rect.Intersects(collideRect))
                     enem.Velocity = Vector2.Zero;
@@ -222,6 +245,7 @@ namespace WeakSven
             {
                 telXN = 1280 - Game1.BIT_SIZE_PL;
                 telYN = Game1.windowWidth - Game1.BIT_SIZE_PL;
+                
             }
             else if (CurrentLevel == 2)
             {
@@ -299,6 +323,7 @@ namespace WeakSven
             }
             #endregion
 
+            Bgms[currentMusic].Play(gameTime);
 
         }
 

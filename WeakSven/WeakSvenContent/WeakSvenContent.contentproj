@@ -37,14 +37,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Audio\BGM\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Audio\SFX\bing.wav">
-      <Name>bing</Name>
-      <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
-    </Compile>
+    <Folder Include="Audio\SFX\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enemy\Monster.png">
@@ -99,6 +92,41 @@
       <Name>lava</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Audio\BGM\bgm1.mp3">
+      <Name>bgm1</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+    </Compile>
+    <Compile Include="Audio\BGM\bgm2.mp3">
+      <Name>bgm2</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+    </Compile>
+    <Compile Include="Audio\BGM\bgm3.mp3">
+      <Name>bgm3</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+    </Compile>
+    <Compile Include="Audio\BGM\bgm4.mp3">
+      <Name>bgm4</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+    </Compile>
+    <Compile Include="Audio\BGM\bgm5.mp3">
+      <Name>bgm5</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+    </Compile>
+    <Compile Include="Audio\BGM\bgm6.mp3">
+      <Name>bgm6</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+    </Compile>
+    <Compile Include="Audio\BGM\bgm7.mp3">
+      <Name>bgm7</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
     </Compile>
     <Content Include="BG_Art\bg2.jpg">
       <Name>bg2</Name>
