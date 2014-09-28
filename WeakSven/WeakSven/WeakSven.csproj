@@ -74,6 +74,7 @@
   <ItemGroup>
     <Compile Include="Animation.cs" />
     <Compile Include="AudioSFX.cs" />
+    <Compile Include="BGMSFX.cs" />
     <Compile Include="Button.cs" />
     <Compile Include="Combat.cs" />
     <Compile Include="Level.cs" />

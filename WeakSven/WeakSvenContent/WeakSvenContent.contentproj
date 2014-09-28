@@ -38,13 +38,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Audio\BGM\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Audio\SFX\bing.wav">
-      <Name>bing</Name>
-      <Importer>WavImporter</Importer>
-      <Processor>SoundEffectProcessor</Processor>
-    </Compile>
+    <Folder Include="Audio\SFX\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enemy\Monster.png">

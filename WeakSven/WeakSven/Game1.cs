@@ -1,7 +1,9 @@
 using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 using XNAGUI;
 
 namespace WeakSven
@@ -36,7 +38,6 @@ namespace WeakSven
         KeyboardState previousKeyboard;
 
         Texture2D bgPic;
-        Texture2D levelBG;
 
         public static int windowWidth;
         public static int windowHeight;
@@ -47,6 +48,7 @@ namespace WeakSven
         Text text;
         Rectangle playName;
         SpriteFont font;
+        
 
         #endregion
 
@@ -55,7 +57,7 @@ namespace WeakSven
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             graphics.IsFullScreen = false;
-
+            
             // if you don't want full screen play with these values.
             graphics.PreferredBackBufferHeight = 1280;
             graphics.PreferredBackBufferWidth = 1280;
@@ -80,6 +82,7 @@ namespace WeakSven
             UIManager.Init(GraphicsDevice, Content.Load<SpriteFont>("Font"));
             button.Text = "Click Me!";
 
+
             spriteBatch = new SpriteBatch(GraphicsDevice);
             font = Content.Load<SpriteFont>("font");
 
@@ -89,7 +92,6 @@ namespace WeakSven
             playButton = new Button(font, titleBox, new Rectangle(170, 1040, 345, 130));
             playButton.Label = "PLAY";
             playButton.clicked += playButton_clicked;
-
             font = Content.Load<SpriteFont>("font");
 
             Player.Instance.Load(Content, "Characters/Player");
@@ -101,8 +103,7 @@ namespace WeakSven
             monster.Position = new Vector2(400, 110);
 
             bgPic = Content.Load<Texture2D>("BG_Art/bg4");
-            levelBG = Content.Load<Texture2D>("BG_Art/bg3");
-
+            level.ListMusic(Content);
             builder.LoadTextures(Content);
             level.LoadTextures(Content);
 
@@ -135,7 +136,6 @@ namespace WeakSven
                 this.Exit();
 
             playButton.Update(gameTime);
-
 
             whirl.X = (Player.Instance.rect.X - BIT_SIZE);
             whirl.Y = (Player.Instance.rect.Y - BIT_SIZE);
@@ -173,13 +173,8 @@ namespace WeakSven
             #region Binding characters to screen bounds
             if (Player.Instance.rect.X + Player.Instance.rect.Width > windowWidth)
             {
-                //TODO: To go to the next level uncomment but the new layer will mimic the old layer in regards to collsion
-                // if(Player.Instance.Position == new Vector2(1275, windowWidth))
-                // {
-                //     level2.Load(6);
-                //     Player.Instance.Position = new Vector2(110, 350);
                 Player.Instance.MoveBack();
-                // }
+             
             }
 
             if (Player.Instance.rect.X < 0)
@@ -214,7 +209,6 @@ namespace WeakSven
 
             if (!playButton.drawn && builderMode == false)
             {
-                spriteBatch.Draw(levelBG, new Rectangle(0, 0, windowWidth, windowHeight), Color.Black);
 
                 level.Draw(spriteBatch);
 
@@ -229,6 +223,7 @@ namespace WeakSven
                 spriteBatch.Draw(circTex, whirl, Color.White);
                 spriteBatch.Draw(circTex, whirl2, Color.White);
 
+
             }
 
             if (builderMode == true)
@@ -239,7 +234,6 @@ namespace WeakSven
         }
     }
 }
-
 //TODO: MATH IDEA
 /////               HERE IS THE THEORY I HAD TOWARD THE LONG RANGE THING.
 //
