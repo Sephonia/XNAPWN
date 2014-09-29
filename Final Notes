@@ -1,0 +1,9 @@
+There is some copy/pasting going on for the AudioSFX and AudioBGM. Maybe there should be an "Audio" class of some sort that those would derive from to prevent copy and paste and just use virtual or override.
+Found some redundant lines such as the ones in the Text class. Line 54 is redundant since it happens again anyway on line 59 and therefore is not needed.
+Nice commenting on Enemy class.
+There are some declared unused variables in Level "slowAndDamage". If they are not being used then they should be commented out to prevent mistakes or completely taken out if no longer using.
+The teleportation should possibly be taken care of in some-kind of teleporter class rather than in Level.
+Pretty cool level builder code.
+There are some specific classes in Game1 such as "monster" and "whirl" which should probably be managed and loaded up in a level of some sort.
+I would make your static window width and height in Game1 getters and private setters since you don't want anything to mess with those.
+Buttons, button events and level specific logic shouldn't be found in Game1 but in things like UI manager and level.
